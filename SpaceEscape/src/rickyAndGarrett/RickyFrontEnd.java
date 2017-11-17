@@ -23,7 +23,6 @@ public class RickyFrontEnd implements GarrettSupport{
 			displayBoard(backend.getSquares());
 		    String input = backend.getValidUserInput();
 		    respondToInput(input);
-		    autoReveal();
 		  }
 			displayBoard(backend.getSquares());
 		    printGameOverMessage(backend.victorious());
@@ -37,8 +36,30 @@ public class RickyFrontEnd implements GarrettSupport{
 		}
 	}
 
-	public void autoReveal() {
-		
+	public void autoReveal(RickyGarrettSquare square) {
+		int row = square.getRow();
+		int col = square.getCol();
+		revealEmptySquares(square, row, col);
+		if(row > 0) {
+			revealEmptySquares(backend.getSquares()[row - 1][col], row - 1, col);
+		}
+		if(row < backend.getSquares().length - 1) {
+			revealEmptySquares(backend.getSquares()[row + 1][col], row + 1, col);
+		}
+	}
+
+	public void revealEmptySquares(RickyGarrettSquare square, int row, int col) {
+		square.setRevealed(true);
+		if(col > 0) {
+			if(!backend.getSquares()[row][col - 1].isRevealed()) {
+				backend.getSquares()[row][col - 1].setRevealed(true);
+			}
+		}
+		if(col < backend.getSquares().length - 1) {
+			if(!backend.getSquares()[row][col + 1].isRevealed()) {
+				backend.getSquares()[row][col + 1].setRevealed(true);
+			}
+		}
 	}
 
 	public void respondToInput(String input) {
@@ -54,7 +75,7 @@ public class RickyFrontEnd implements GarrettSupport{
 				squares[row][col].setRevealed(true);
 			}
 			else{
-				autoReveal();
+				autoReveal(squares[row][col]);
 			}
 		}
 		else{
