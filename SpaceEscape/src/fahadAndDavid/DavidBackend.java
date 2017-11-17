@@ -22,9 +22,9 @@ public class DavidBackend implements FahadSupport{
 		toggleSlot(row+1, col);
 		toggleSlot(row-1, col);
 		toggleSlot(row, col);
-		toggleIfInBounds(row,col+1);
+		toggleIfInBounds(row+1,col);
 		toggleIfInBounds(row,col);
-		toggleIfInBounds(row,col-1);
+		toggleIfInBounds(row-1,col);
 	}
 	
 	public void toggleSlot(int row, int col) {
