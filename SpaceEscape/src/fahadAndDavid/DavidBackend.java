@@ -28,14 +28,8 @@ public class DavidBackend implements FahadSupport{
 	}
 	
 	public void toggleSlot(int row, int col) {
-		if(row >= 0 && row < game.length) {
-			if(col > 0) {
-				game[row][col - 1] = !game[row][col - 1];
-			}
-			if(col < game[row].length - 1) {
-				game[row][col + 1] = !game[row][col + 1];
-			}
-		}
+		toggleIfInBounds(row,col-1);
+		toggleIfInBounds(row,col+1);
 	}
 	public void toggleIfInBounds(int row, int col) {
 		if(row >= 0 && row < game.length && col >= 0 && col < game[row].length) {
