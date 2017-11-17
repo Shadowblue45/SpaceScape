@@ -31,4 +31,9 @@ public class TylerYonathanPlot {
 
 	}
 
+	public Object getIdentifier() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -1,6 +1,6 @@
 package yonathaWins;
 
-
+import java.awt.Cursor;
 
 public class YonathanFrontEnd implements TylerSupport {
 	//make 2d array populate with tylerfiller
@@ -18,13 +18,40 @@ public class YonathanFrontEnd implements TylerSupport {
 	private TylerYonathanPlot[][] flowRoom;
 	private YonathanSupport backend;
 	private int linesComplete;
+	private Object gamePlot;
+	private Cursor cursor;
 	public YonathanFrontEnd() {
 		backend = new TylerBackend(this);
 		flowRoom = new TylerYonathanPlot[3][3];
 		linesComplete = 0;
-		
+			
 	}
+    private void printBoard() {
+        System.out.println(replicate('_', (this.flowRoom.length * 2) + 2));
+        for (final TylerYonathanPlot[] column : this.flowRoom) {
+            for (int y = 0; y < column.length; y++) {
+                final TylerYonathanPlot point = column[y];
+                final String leftWall = y == 0 ? "|" : "";
+                final String rightWall = y == column.length - 1 ? "|" : "";
+                final String bottom = (this.cursor.equals(point)) ? "* " : ((Object) point.getIdentifier()).isPresent() ? String.format("%s ", point.getIdentifier().get()) : "  ";
+                final String newlineCheck = y == this.flowRoom.length - 1 ? "\n" : "";
+                System.out.printf(" ", leftWall, bottom, rightWall, newlineCheck);
+            }
+        }
+        System.out.println(replicate('‾', (this.flowRoom.length * 3) + 2));
+    }
 
+	private String replicate(char ch, int times) {
+        final StringBuilder xStr = new StringBuilder();
+		for (int x = 0; x < times; x++) {
+            xStr.append(ch);
+        }
+        return xStr.toString();
+	}
+	private Object getIdentifier() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	private void displayFlow() {
 		System.out.println("____");
 		for(int row = 0; row < flowRoom.length; row++){

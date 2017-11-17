@@ -1,5 +1,7 @@
 package yonathaWins;
 
+import java.util.stream.Stream;
+
 public class TylerBackend implements YonathanSupport {
 
 	//go to yonathan backend, make 2d array, define proportions
@@ -70,24 +72,26 @@ public class TylerBackend implements YonathanSupport {
 			
 		 
 	
-	public boolean isValid(int  x ,int  y) {
-//yonathan setting x and y is on your end
-				if(TylerYonathanPlot[x][y].occupied == false ) {
-					occupiedSeg[indexOcc] = TylerYonathanPlot[x][y];
-					indexOcc++;
-					setOrientation();
-					return true;
-				}
-					
-				return false;
-	
+    public TylerBackend[] getAvaliablePoints(TylerYonathanPlot[][] plot) {
+        return Stream.of(possibleDirections(plot)).map((d) -> getPoint(plot, d)).toArray(TylerBackend[]::new);
+    }
+    private Object possibleDirections(TylerYonathanPlot[][] plot) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
+	public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || o.getClass().isAssignableFrom(getClass())) return false;
+        TylerBackend cursor = (TylerBackend) o;
+        return x == cursor.x &&
+                y == cursor.y;
+    }
 	@Override
 	public int getValidUserInput(String imp ) {
 		// TODO Auto-generated method stub
 		if(validKeys.indexOf(imp)!= -1) {
-		isValid(x, y);
+		
 		return validKeys.indexOf(imp);}
 		
 		return -1;
@@ -96,6 +100,12 @@ public class TylerBackend implements YonathanSupport {
 	@Override
 	public boolean isPlaying() {
 	
+	}
+
+	@Override
+	public String getValidUserInput() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
