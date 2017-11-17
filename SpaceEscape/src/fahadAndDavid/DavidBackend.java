@@ -54,7 +54,7 @@ public class DavidBackend implements FahadSupport{
 
 	public String getValidUserInput(String input) {
 		while(!validInput(input)) {
-			System.out.println("You need to use the fomat x:y, and in between 0-4");
+			System.out.println("You need to use the format y,x, and in between 0-4");
 			input = in.nextLine();
 		}
 		return input;
