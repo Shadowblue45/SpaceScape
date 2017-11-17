@@ -14,7 +14,7 @@ public class RickyFrontEnd implements GarrettSupport{
 
 	public void start() {
 		RickyGarrettSquare[][] squares = backend.getSquares();
-		displayBoard(squares);
+		play();
 	}
 	
 	public void play() {
