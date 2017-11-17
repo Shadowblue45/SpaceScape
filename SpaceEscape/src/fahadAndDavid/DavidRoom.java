@@ -56,7 +56,7 @@ public class DavidRoom extends CaveRoom {
 			while(answer != numOfGames) {
 				CaveExplorer.print("Thats not the answer!");
 				s = CaveExplorer.in.nextLine();
-				if(isNumeric(s))
+				
 				answer = Integer.valueOf(s);
 			}
 			CaveExplorer.print("Congradulations you beat me!");

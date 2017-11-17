@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class DavidBackend implements FahadSupport{
 	
 	public boolean[][] game;
-	public static Scanner in;
+	public static Scanner in = new Scanner(System.in);
 	
 	public void generateGame() {
 		game = new boolean[5][5];
