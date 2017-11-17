@@ -61,6 +61,7 @@ public class DavidBackend implements FahadSupport{
 	public String getValidUserInput(String input) {
 		while(!validInput(input)) {
 			System.out.println("You need to use the fomat x:y");
+			input = in.nextLine();
 		}
 		return input;
 	}
