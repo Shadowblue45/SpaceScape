@@ -54,7 +54,7 @@ public class DavidBackend implements FahadSupport{
 
 	public String getValidUserInput(String input) {
 		while(!validInput(input)) {
-			System.out.println("You need to use the fomat x:y");
+			System.out.println("You need to use the fomat x:y, and in between 0-4");
 			input = in.nextLine();
 		}
 		return input;
@@ -62,8 +62,8 @@ public class DavidBackend implements FahadSupport{
 
 	public boolean validInput(String input) {
 		if(input.length() == 3 && input.substring(1,2).equals(",")) {
-			if((input.substring(0,1).compareTo("5") <= 0 && input.substring(0,1).compareTo("0") >= 0) &&
-					(input.substring(2,3).compareTo("5") <= 0 && input.substring(2,3).compareTo("0") >= 0)) {
+			if((input.substring(0,1).compareTo("4") <= 0 && input.substring(0,1).compareTo("0") >= 0) &&
+					(input.substring(2,3).compareTo("4") <= 0 && input.substring(2,3).compareTo("0") >= 0)) {
 				return true;
 			}
 		}
