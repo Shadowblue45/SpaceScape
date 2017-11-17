@@ -79,7 +79,7 @@ public class RickyFrontEnd implements GarrettSupport{
 			}
 		}
 		else{
-			System.out.println("You already typed in this coordinate.");
+			System.out.println("This square has already been revealed.");
 		}
 	}
 	
