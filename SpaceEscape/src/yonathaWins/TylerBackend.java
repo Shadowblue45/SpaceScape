@@ -73,7 +73,7 @@ public class TylerBackend implements YonathanSupport {
 		 
 	
     public TylerBackend[] getAvaliablePoints(TylerYonathanPlot[][] plot) {
-        return Stream.of(possibleDirections(plot)).map((d) -> getPoint(plot, d)).toArray(TylerBackend[]::new);
+        
     }
     private Object possibleDirections(TylerYonathanPlot[][] plot) {
 		// TODO Auto-generated method stub
