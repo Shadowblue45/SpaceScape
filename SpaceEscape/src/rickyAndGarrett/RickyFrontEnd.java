@@ -19,13 +19,14 @@ public class RickyFrontEnd implements GarrettSupport{
 	
 	public void play() {
 		backend.setPlaying(true);
-		  while(backend.stillPlaying()){
-		        displayBoard(backend.getSquares());
-		        String input = backend.getValidUserInput();
-		        respondToInput(input);
-		        autoReveal();
+		while(backend.stillPlaying()){
+			displayBoard(backend.getSquares());
+		    String input = backend.getValidUserInput();
+		    respondToInput(input);
+		    autoReveal();
 		  }
-		        printGameOverMessage(backend.victorious());
+			displayBoard(backend.getSquares());
+		    printGameOverMessage(backend.victorious());
 	}
 
 	private void printGameOverMessage(boolean victorious) {

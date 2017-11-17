@@ -68,7 +68,7 @@ public class GarrettBackEnd implements RickySupport{
 					(c.compareTo("5") <= 0 && c.compareTo("0") >= 0)) {
 				return input;
 			}else {
-				return "Please type in this format: x,y";
+				return "Please type in this format: y,x and use numbers 0-5";
 			}
 		}
 	}
