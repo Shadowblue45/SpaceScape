@@ -23,6 +23,11 @@ public class GarrettBackEnd implements RickySupport{
 			}
 		}
 		randomizeBombs();
+		for(int row = 0; row < squares.length; row++){
+			for(int col = 0; col < squares[row].length; col++){
+				calculateNumberOfBombs(squares[row][col]);
+			}
+		}
 	}
 
 	public void randomizeBombs() {
