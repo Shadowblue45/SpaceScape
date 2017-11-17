@@ -21,6 +21,9 @@ public class FahadFrontend implements DavidSupport{
 		while(!backend.isVictorious()){
 			displayBoard(visuals);
 			String input = DavidBackend.in.nextLine();
+			if(input.equals("nani")) {
+				break;
+			}
 			String userInput = backend.getValidUserInput(input);
 			respondToInput(userInput);
 		}
