@@ -36,11 +36,13 @@ public class FahadFrontend implements DavidSupport{
 		String result = "";
 		setBoard();
 		for(int row = 0;row < pic.length;row++) {
+			result+= row + " ";
 			for(int col = 0;col < pic[row].length;col++){
 				result += pic[row][col];
 			}
 			result += "\n";
 		}
+		result+= "  0 1 2 3 4 ";
 		System.out.println(result);
 	}
 
