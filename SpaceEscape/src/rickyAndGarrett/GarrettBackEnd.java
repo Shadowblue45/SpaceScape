@@ -128,8 +128,19 @@ public class GarrettBackEnd implements RickySupport{
 
 	@Override
 	public boolean victorious() {
-		// TODO Auto-generated method stub
-		return false;
+		for(int row = 0; row < squares.length; row++){
+			for(int col = 0; col < squares[row].length; col++){
+				if(squares[row][col].isBomb()) {
+					if(squares[row][col].isRevealed()) {
+						return false;
+					}
+				}
+				else if(!squares[row][col].isRevealed()) {
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 }
