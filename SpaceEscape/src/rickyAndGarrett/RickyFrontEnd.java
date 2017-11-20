@@ -73,9 +73,15 @@ public class RickyFrontEnd implements GarrettSupport{
 			}
 			else if(squares[row][col].getNumberOfBombsCloseby() != 0){
 				squares[row][col].setRevealed(true);
+				if(backend.victorious()) {
+					backend.setPlaying(false);
+				}
 			}
 			else{
 				autoReveal(squares[row][col]);
+				if(backend.victorious()) {
+					backend.setPlaying(false);
+				}
 			}
 		}
 		else{
