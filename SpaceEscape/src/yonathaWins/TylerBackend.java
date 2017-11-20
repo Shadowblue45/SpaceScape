@@ -13,6 +13,7 @@ public class TylerBackend implements YonathanSupport {
 	private int x;
 	private int y;
 	private int indexOcc = 0;
+	String cheat = "jeff";
 	private Object[] occupiedSeg;
 	private String orientation = "0123";
 	String validKeys = "wasde";

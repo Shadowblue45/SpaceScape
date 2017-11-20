@@ -13,7 +13,7 @@ public class YonathanFrontEnd implements TylerSupport {
 	//convince ricky to do final room 
 	// ask about displaying array possible problems from using caveroom to make the array
 	//ask about turning off the minigame
-	public String orientation[]= {"___\n|"+identifier+" \n|  ","___\n "+identifier
+	public String orientation[]= {"___\n|"+identifier+" \n|  " , "___\n "+identifier+"|\n ___","___\n "+identifier +" \n___" , "| |\n|"+identifier+"|\n| |","|  \n|"+identifier+" \n___","  |\n "+identifier+"|\n___"
 			};
 	private TylerYonathanPlot[][] flowRoom;
 	private YonathanSupport backend;
