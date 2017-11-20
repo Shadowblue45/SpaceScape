@@ -20,10 +20,16 @@ public class YonathanFrontEnd implements TylerSupport {
 	private int linesComplete;
 	private Object gamePlot;
 	private Cursor cursor;
-	public YonathanFrontEnd() {
+	int x;
+	int y;
+	
+	public YonathanFrontEnd(int x, int y) {
+		this.x = x;
+		this.y = y;
 		backend = new TylerBackend(this);
 		flowRoom = new TylerYonathanPlot[3][3];
 		linesComplete = 0;
+ 
 			
 	}
     private void printBoard() {
