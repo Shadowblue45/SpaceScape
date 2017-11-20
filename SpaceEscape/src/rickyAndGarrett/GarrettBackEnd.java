@@ -61,14 +61,18 @@ public class GarrettBackEnd implements RickySupport{
 		String a = input.substring(0, 1);
 		String b = input.substring(1, 2);
 		String c = input.substring(2, 3);
-		if(!b.equals(",") || input.length() != 3) {
-			return "Please type in this format: x,y";
+		if(input.equals("surfingraichu")){
+			return input;
 		}else {
-			if((a.compareTo("5") <= 0 && a.compareTo("0") >= 0) &&
-					(c.compareTo("5") <= 0 && c.compareTo("0") >= 0)) {
-				return input;
+			if(!b.equals(",") || input.length() != 3) {
+				return "Please type in this format: x,y";
 			}else {
-				return "Please type in this format: y,x and use numbers 0-5";
+				if((a.compareTo("5") <= 0 && a.compareTo("0") >= 0) &&
+						(c.compareTo("5") <= 0 && c.compareTo("0") >= 0)) {
+					return input;
+				}else {
+					return "Please type in this format: y,x and use numbers 0-5";
+				}
 			}
 		}
 	}
