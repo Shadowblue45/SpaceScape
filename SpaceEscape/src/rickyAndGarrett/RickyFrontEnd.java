@@ -134,7 +134,15 @@ public class RickyFrontEnd implements GarrettSupport{
 			int col = Integer.parseInt(input.substring(2));
 			if(!squares[row][col].isRevealed()){
 				if(squares[row][col].isBomb()) {
-					squares[row][col].setRevealed(true);
+					for(int brow = 0; brow < backend.getSquares().length; brow++){
+						for(int bcol = 0; bcol < backend.getSquares()[row].length; bcol++){
+							if(backend.getSquares()[brow][bcol].isBomb()) {
+								if(!backend.getSquares()[brow][bcol].isRevealed()) {
+									backend.getSquares()[brow][bcol].setRevealed(true);
+								}
+							}
+						}
+					}
 					backend.setPlaying(false);
 				}
 				else if(squares[row][col].getNumberOfBombsCloseby() != 0){
