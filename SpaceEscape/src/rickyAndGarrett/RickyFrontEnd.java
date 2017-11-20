@@ -47,6 +47,71 @@ public class RickyFrontEnd implements GarrettSupport{
 			revealEmptySquares(backend.getSquares()[row + 1][col], row + 1, col);
 		}
 	}
+	
+	public void revealAll(RickyGarrettSquare square) {
+		autoReveal(square);
+		while(!blankSquaresRevealed()) {
+			for(int row = 0; row < backend.getSquares().length; row++){
+				for(int col = 0; col < backend.getSquares()[row].length; col++){
+					if(backend.getSquares()[row][col].getNumberOfBombsCloseby() == 0 && backend.getSquares()[row][col].isRevealed()) {
+						if(!nearbySquaresRevealed(backend.getSquares()[row][col])) {
+							autoReveal(backend.getSquares()[row][col]);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public boolean blankSquaresRevealed() {
+		for(int row = 0; row < backend.getSquares().length; row++){
+			for(int col = 0; col < backend.getSquares()[row].length; col++){
+				if(backend.getSquares()[row][col].getNumberOfBombsCloseby() == 0 && 
+						backend.getSquares()[row][col].isRevealed()) {
+					if(!nearbySquaresRevealed(backend.getSquares()[row][col])) {
+						return false;
+					}
+				}
+			}
+		}
+		return true;
+	}
+
+	public boolean nearbySquaresRevealed(RickyGarrettSquare square) {
+		int row = square.getRow();
+		int col = square.getCol();
+		if(!checkSquaresLine(backend.getSquares(), row, col)) {
+			return false;
+		}
+		if(row > 0) {
+			if(!checkSquaresLine(backend.getSquares(), row - 1, col)) {
+				return false;
+			}
+		}
+		if(row < backend.getSquares().length - 1) {
+			if(!checkSquaresLine(backend.getSquares(), row + 1, col)){
+				return false;
+			}
+		}
+		return true;
+	}
+
+	public boolean checkSquaresLine(RickyGarrettSquare[][] squares, int row, int col) {
+		if(!squares[row][col].isRevealed()) {
+			return false;
+		}
+		if(col > 0) {
+			if(!squares[row][col - 1].isRevealed()){
+				return false;
+			}
+		}
+		if(col < squares[row].length - 1) {
+			if(!squares[row][col + 1].isRevealed()) {
+				return false;
+			}
+		}
+		return true;
+	}
 
 	public void revealEmptySquares(RickyGarrettSquare square, int row, int col) {
 		square.setRevealed(true);
@@ -78,7 +143,7 @@ public class RickyFrontEnd implements GarrettSupport{
 				}
 			}
 			else{
-				autoReveal(squares[row][col]);
+				revealAll(squares[row][col]);
 				if(backend.victorious()) {
 					backend.setPlaying(false);
 				}
