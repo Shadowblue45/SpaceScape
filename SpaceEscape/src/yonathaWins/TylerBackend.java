@@ -32,52 +32,22 @@ public class TylerBackend implements YonathanSupport {
 		
 	}
 	
-	public int setOrientation() {
-	if(occupiedSeg[indexOcc-2].x-occupiedSeg[indexOcc-1].x<0)		{
-		if(occupiedSeg[indexOcc-1].x-occupiedSeg[indexOcc].x<0)
-		return 0;//straight line 
-		if(occupiedSeg[indexOcc-1].y-occupiedSeg[indexOcc].y<0)
-		return 1;//corner up from left
-		if(occupiedSeg[indexOcc-1].y-occupiedSeg[indexOcc].y>0)
-		return 2;//corner down from left	
-	}
-	
-	else if(occupiedSeg[indexOcc-2].x-occupiedSeg[indexOcc-1].x>0) {
-		if(occupiedSeg[indexOcc-1].x-occupiedSeg[indexOcc].x>0)
-		return 0;//straight line	
-		if(occupiedSeg[indexOcc-1].y-occupiedSeg[indexOcc].y<0)
-		return 3;//corner up from right
-		if(occupiedSeg[indexOcc-1].y-occupiedSeg[indexOcc].y>0)
-		return 4;//corner down from right
-	}
-		
-	else if(occupiedSeg[indexOcc-2].y-occupiedSeg[indexOcc-1].y<0)		{
-		if(occupiedSeg[indexOcc-1].x-occupiedSeg[indexOcc].x<0)
-		return 4;//corner down from right
-		if(occupiedSeg[indexOcc-1].x-occupiedSeg[indexOcc].x>0)
-		return 2;//corner down from left	
-		if(occupiedSeg[indexOcc-1].y-occupiedSeg[indexOcc].y<0)
-		return 5;//vertical line
-	}
-	else if(occupiedSeg[indexOcc-2].y-occupiedSeg[indexOcc-1].y>0) {
-		if(occupiedSeg[indexOcc-1].x-occupiedSeg[indexOcc].x<0)
-		return 3;//corner up from right
-		if(occupiedSeg[indexOcc-1].x-occupiedSeg[indexOcc].x>0)
-		return 1;//corner up from left	
-		if(occupiedSeg[indexOcc-1].y-occupiedSeg[indexOcc].y>0)
-		return 5;//vertical line
-	}
-	
-		}
-			
-		 
-	
     public TylerBackend[] getAvaliablePoints(TylerYonathanPlot[][] plot) {
-        
+        return Stream.of(possibleDirections(plot)).map((d) -> getPoint(plot, d)).toArray(TylerBackend[]::new);
     }
     private Object possibleDirections(TylerYonathanPlot[][] plot) {
 		// TODO Auto-generated method stub
-		return null;
+		return Stream.of(TylerBackend.values()).filter((d) -> !isBlocked(plot, d)).toArray(TylerBackend[]::new);;
+	}
+
+	private boolean isBlocked(TylerYonathanPlot[][] plot, Object d) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	private static Object values() {
+		// TODO Auto-generated method stub
+		return null; 
 	}
 
 	public boolean equals(Object o) {
