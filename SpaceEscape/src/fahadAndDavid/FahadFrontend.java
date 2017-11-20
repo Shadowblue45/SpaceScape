@@ -6,6 +6,7 @@ public class FahadFrontend implements DavidSupport{
 	private int row;
 	private int col;
 	private String[][] visuals = new String[5][5];
+	private String cheat = "Clap on";
 
 	public static void main(String[] args) {
 		FahadFrontend demo = new FahadFrontend();
