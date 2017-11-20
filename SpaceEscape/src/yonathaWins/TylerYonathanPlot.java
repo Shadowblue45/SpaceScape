@@ -1,39 +1,40 @@
 package yonathaWins;
 
-public class TylerYonathanPlot {
+import java.util.Optional;
 
-	private int row;
-	private int col;
-	
-	public TylerYonathanPlot(int row, int col) {
-		this.row = row;
-		this.col = col;
-	}
-	
-	public int getRow() {
-		return row;
-	}
+public class TylerYonathanPlot extends YonathanFrontEnd {
 
-	public void setRow(int row) {
-		this.row = row;
+    private Optional<YonathanFrontEnd> originDirection;
+    private Optional<Character> identifier;
+    
+	public TylerYonathanPlot(int x, int y, Optional<YonathanFrontEnd> originDirection, Optional<Character> identifier) {
+		super(x, y);
+        this.originDirection = originDirection;
+        this.identifier = identifier;
 	}
+	 
+    public int getX() {
+        return super.x;
+    }
 
-	public int getCol() {
-		return col;
-	}
+    public int getY() {
+        return super.y;
+    }
+    public Optional<YonathanFrontEnd> getOriginDirection() {
+        return originDirection;
+    }
 
-	public void setCol(int col) {
-		this.col = col;
-	}
+    public Optional<Character> getIdentifier() {
+        return identifier;
+    }
 
 	public static void main(String[] args) {
 		
 
 	}
 
-	public Object getIdentifier() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public void setIdentifier(Optional<Character> identifier) {
+        this.identifier = identifier;
+    }
 
 }
