@@ -128,7 +128,7 @@ public class RickyFrontEnd implements GarrettSupport{
 	}
 
 	public void respondToInput(String input) {
-		if(input.equals("surfingraichu")) {
+		if(input.equals("surfingmouse")) {
 			backend.setPlaying(false);
 		}else {
 			RickyGarrettSquare[][] squares = backend.getSquares();

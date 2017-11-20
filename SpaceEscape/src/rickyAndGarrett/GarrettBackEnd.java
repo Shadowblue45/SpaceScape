@@ -61,7 +61,7 @@ public class GarrettBackEnd implements RickySupport{
 		String a = input.substring(0, 1);
 		String b = input.substring(1, 2);
 		String c = input.substring(2, 3);
-		if(input.equals("surfingraichu")){
+		if(input.equals("surfingmouse")){
 			return input;
 		}else {
 			if(!b.equals(",") || input.length() != 3) {
