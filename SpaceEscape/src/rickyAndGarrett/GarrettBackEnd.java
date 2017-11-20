@@ -4,7 +4,8 @@ public class GarrettBackEnd implements RickySupport{
 	
 	private GarrettSupport frontend;
 	private RickyGarrettSquare[][] squares;
-
+	private boolean valid = false;
+	
 	private static int numberOfBombs;
 	private boolean isPlaying;
 	
@@ -55,26 +56,23 @@ public class GarrettBackEnd implements RickySupport{
 		this.isPlaying = isPlaying;
 	}
 
-	@Override
-	public String getValidUserInput() {
-		String input = RickyFrontEnd.in.nextLine();
-		String a = input.substring(0, 1);
-		String b = input.substring(1, 2);
-		String c = input.substring(2, 3);
-		if(input.equals("surfingmouse")){
-			return input;
-		}else {
-			if(!b.equals(",") || input.length() != 3) {
-				return "Please type in this format: x,y";
-			}else {
-				if((a.compareTo("5") <= 0 && a.compareTo("0") >= 0) &&
-						(c.compareTo("5") <= 0 && c.compareTo("0") >= 0)) {
-					return input;
-				}else {
-					return "Please type in this format: y,x and use numbers 0-5";
-				}
+	
+	public String getValidUserInput(String input) {
+		while(!validInput(input)) {
+		System.out.println("Please type in this format: y,x and use numbers 0-5");
+		input =RickyFrontEnd.in.nextLine();
+		}
+		return input;
+	}
+	
+	public boolean validInput(String input) {
+		if(input.substring(1, 2).equals(",") && input.length() == 3) {
+			if((input.substring(0, 1).compareTo("5") <= 0 && input.substring(0, 1).compareTo("0") >= 0) &&
+					(input.substring(2, 3).compareTo("5") <= 0 && input.substring(2, 3).compareTo("0") >= 0)) {
+			return true;
 			}
 		}
+		return false;
 	}
 	
 	public void calculateNumberOfBombs(RickyGarrettSquare square) {

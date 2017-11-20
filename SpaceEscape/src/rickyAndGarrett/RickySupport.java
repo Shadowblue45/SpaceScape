@@ -4,7 +4,7 @@ public interface RickySupport {
 
 	boolean stillPlaying();
 
-	String getValidUserInput();
+	String getValidUserInput(String input);
 
 	boolean victorious();
 
