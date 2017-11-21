@@ -1,6 +1,8 @@
 package yonathaWins;
 
 import java.awt.Cursor;
+import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class YonathanFrontEnd implements TylerSupport {
 	//make 2d array populate with tylerfiller
@@ -44,7 +46,7 @@ public class YonathanFrontEnd implements TylerSupport {
                 System.out.printf(" ", leftWall, bottom, rightWall, newlineCheck);
             }
         }
-        System.out.println(replicate('‾', (this.flowRoom.length * 3) + 2));
+        System.out.println(replicate('-', (this.flowRoom.length * 3) -2));
     }
 
 	private String replicate(char ch, int times) {
@@ -69,24 +71,58 @@ public class YonathanFrontEnd implements TylerSupport {
 	}
 
 	public static void main(String[] args) {
-		YonathanFrontEnd demo = new YonathanFrontEnd();
-		demo.play();
+		
+		YonathanFrontEnd.play();
 
 	}
-	
+    private void play() {
+        String lastResponse;
+        Scanner scanner = new Scanner(System.in);
+        Boolean printedBoard = false;
+        do {
+            if (!printedBoard) {
+                printBoard();
+                printedBoard = true;
+            }
+            printOptions();
+            System.out.print("Your choice: ");
+            lastResponse = scanner.nextLine();
+            if (validDirection(lastResponse)) {
+                printedBoard = false;
+                final TylerBackend dir = parseDirection(lastResponse).get(); // validDirection already checks this...
+                final TylerYonathanPlot destination = this.cursor.getPoint(this.gamePlot, dir).get();
+                if (destination.getIdentifier().isPresent() && destination.getIdentifier().get().equals('e')) {
+                	printGameOverMessage() ;
+                    break;
+                }
+                this.cursor.move(gamePlot, dir);
+            } else {
+                System.out.println("Invalid direction!");
+            }
+        } while (!needsToEnd(lastResponse));
+        System.out.println("Adios!");
 
-	private void play() {
+    }
+	
+    private boolean needsToEnd(String lastResponse) {
+        final String[] end = new String[]{"q", "quit", "exit", "bye", "leave"};
+        return Stream.of(end).anyMatch((String x) -> lastResponse.toLowerCase().contains(x));
+    }
+    
+    
+	
+	//private void play() {
 		//while(backend.isPlaying()) {
-			  displayFlow();
+	//		  displayFlow();
 		        
 		        //String input = backend.getValidUserInput();
 		        //respondToInput(input);
 		       
 		        
 		   // }
-		        printGameOverMessage();
+	//	        printGameOverMessage();
 		
-	}
+//	}
 
 	private void printGameOverMessage() {
 		System.out.println("conglaturation you win");
