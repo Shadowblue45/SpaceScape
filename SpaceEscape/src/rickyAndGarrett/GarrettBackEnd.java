@@ -66,6 +66,9 @@ public class GarrettBackEnd implements RickySupport{
 	}
 	
 	public boolean validInput(String input) {
+		if(input.length() == 1) {
+			return false;
+		}
 		if(input.equals("")) {
 			return false;
 		}
