@@ -2,9 +2,11 @@ package yonathaWins;
 
 import java.awt.Cursor;
 import java.util.Optional;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.StringJoiner;
 import java.util.stream.Stream;
+import javafx.util.Pair;
 
 public class YonathanFrontEnd implements TylerSupport {
 	//make 2d array populate with tylerfiller
@@ -27,15 +29,26 @@ public class YonathanFrontEnd implements TylerSupport {
 	static int x;
 	int y;
 	
-	public YonathanFrontEnd(int x, int y) {
-		this.x = x;
-		this.y = y;
-		backend = new TylerBackend(this);
-		flowRoom = new TylerYonathanPlot[3][3];
- 
+	public YonathanFrontEnd() {
+        final Pair<Cursor, TylerYonathanPlot[][]> data = createPlot(5);
+        this.cursor = data.getFirst();
+        this.gamePlot = data.getSecond();
 			
 	}
-    private void printBoard() {
+    private Pair<Cursor, TylerYonathanPlot[][]> createPlot(int boxSize) {
+        final TylerYonathanPlot[][] def = new TylerYonathanPlot[boxSize][boxSize];
+        final Random rand = new Random();
+        final Pair<Integer, Integer> start = new Pair<>(rand.nextInt(boxSize), rand.nextInt(boxSize));
+        final Pair<Integer, Integer> end = new Pair<>(rand.nextInt(boxSize), rand.nextInt(boxSize));
+        for (int x = 0; x < boxSize; x++) {
+            for (int y = 0; y < boxSize; y++) {
+                def[x][y] = new TylerYonathanPlot(x, y, Optional.empty(), (end.getFirst() == x && end.getSecond() == y) ? (Optional.of('e')) : (start.getFirst() == x && start.getSecond() == y) ? Optional.of('s') : Optional.empty());
+            }
+        }
+        return new Pair<>(new Cursor(start.getFirst(), start.getSecond()), def);
+    }
+
+	private void printBoard() {
         System.out.println(replicate('_', (this.flowRoom.length * 2) + 2));
         for (final TylerYonathanPlot[] column : this.flowRoom) {
             for (int y = 0; y < column.length; y++) {
