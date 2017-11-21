@@ -22,18 +22,27 @@ public class FahadFrontend implements DavidSupport{
 		while(!backend.isVictorious()){
 			displayBoard(visuals);
 			String input = DavidBackend.in.nextLine();
-			if(input.equals("nani")) {
+			if(input.equals(cheat.toLowerCase())) {
 				break;
 			}
 			String userInput = backend.getValidUserInput(input);
 			respondToInput(userInput);
 		}
+		updateWinBoard();
 		displayBoard(visuals);
 		printGameOverMessage();
 	}
 
-	public void updateBoard() {
-		displayBoard(visuals);
+	public void updateWinBoard() {
+		boolean[][] gameBoard = backend.getGameBoard();
+		for(int row = 0; row < gameBoard.length;row++) {
+			for(int col = 0; col < gameBoard[row].length;col++) {
+				if(gameBoard[row][col] == false) {
+					gameBoard[row][col] =true;
+					visuals[row][col] = "+ ";
+				}
+			}
+		}
 	}
 
 	private void displayBoard(String[][] pic) {
