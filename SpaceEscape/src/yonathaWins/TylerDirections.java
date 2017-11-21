@@ -10,34 +10,28 @@ public enum TylerDirections {
     }
 
 	   public char validKeys() {
-		   	if(this.TylerDirections == UP)
+		   	if( this == TylerDirections.UP)
 		       return 'w';
-		   	if(this.TylerDirections == DOWN)
+		   	if(this == TylerDirections.DOWN )
 			       return 's';
-		   	if (this.TylerDirections == LEFT)
+		   	if (this == TylerDirections.LEFT )
 		       return 'a';
-		   	if (this.TylerDirections == RIGHT)
+		   	if (this == TylerDirections.RIGHT)
 			       return 'd';
 		    return '?';
 	   }
 	    public char forBoard() {
-		   	if(this.TylerDirections == UP)
+		   	if(this == TylerDirections.UP )
 			       return '^';
-			   	if(this.TylerDirections == DOWN)
+			   	if(this == TylerDirections.DOWN )
 				       return 'v';
-			   	if (this.TylerDirections == LEFT)
+			   	if (this == TylerDirections.LEFT )
 			       return '<';
-			   	if (this.TylerDirections == RIGHT)
+			   	if (this == TylerDirections.RIGHT)
 				       return '>';
 			     return '?';
 	    }
 
-	
-	public static void main(String[] args) {
-	
-	
-
-	}
 	
 	
 

@@ -1,6 +1,7 @@
 package yonathaWins;
 
 import java.awt.Cursor;
+import java.util.Optional;
 import java.util.Scanner;
 import java.util.StringJoiner;
 import java.util.stream.Stream;
@@ -43,7 +44,7 @@ public class YonathanFrontEnd implements TylerSupport {
                 final TylerYonathanPlot point = column[y];
                 final String leftWall = y == 0 ? "|" : "";
                 final String rightWall = y == column.length - 1 ? "|" : "";
-                final String bottom = (this.cursor.equals(point)) ? "* " : ((Object) point.getIdentifier()).isPresent() ? String.format("%s ", point.getIdentifier().get()) : "  ";
+                final String bottom = (this.cursor.equals(point)) ? "* " : ((Optional<Character>) point.getIdentifier()).isPresent() ? String.format("%s ", point.getIdentifier().get()) : "  ";
                 final String newlineCheck = y == this.flowRoom.length - 1 ? "\n" : "";
                 System.out.printf(" ", leftWall, bottom, rightWall, newlineCheck);
             }
@@ -84,7 +85,7 @@ public class YonathanFrontEnd implements TylerSupport {
             if (validDirection(lastResponse)) {
                 printedBoard = false;
                 final TylerBackend dir = parseDirection(lastResponse).get(); // validDirection already checks this...
-                final TylerYonathanPlot destination = this.cursor.getPoint(this.gamePlot, dir).get();
+                final TylerYonathanPlot destination = ((TylerBackend) this.cursor).getPoint(this.gamePlot, dir).get();
                 if (destination.getIdentifier().isPresent() && destination.getIdentifier().get().equals('e')) {
                 	printGameOverMessage() ;
                 	isPlaying = false;
@@ -93,12 +94,15 @@ public class YonathanFrontEnd implements TylerSupport {
             } else {
                 System.out.println("Invalid direction!");
             }
-        } while (!needsToEnd(lastResponse));
-        System.out.println("Adios!");
+        }
 
     }
 	
-    private void printOptions() {
+    private Optional<Character> parseDirection(String lastResponse) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	private void printOptions() {
     	final TylerDirections[] possible = cursor.possibleDirections(this.gamePlot);
         final StringJoiner joiner = new StringJoiner(", ");
         Stream.of(possible).forEach((dir) -> joiner.add(dir.getRepresentation()));
