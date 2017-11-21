@@ -187,7 +187,7 @@ public class RickyFrontEnd implements GarrettSupport{
 					if(squares[row][col].isBomb()) {
 						System.out.print("B ");
 					}else if(squares[row][col].getNumberOfBombsCloseby() != 0) {
-						System.out.print(squares[row][col].getNumberOfBombsCloseby());
+						System.out.print(squares[row][col].getNumberOfBombsCloseby() + " ");
 					}
 					else {
 						System.out.print("  ");
