@@ -127,9 +127,22 @@ public class RickyFrontEnd implements GarrettSupport{
 			}
 		}
 	}
+	
+	public void revealBombs(RickyGarrettSquare[][] squares) {
+		for(int brow = 0; brow < backend.getSquares().length; brow++){
+			for(int bcol = 0; bcol < backend.getSquares()[brow].length; bcol++){
+				if(backend.getSquares()[brow][bcol].isBomb()) {
+					if(!backend.getSquares()[brow][bcol].isRevealed()) {
+						backend.getSquares()[brow][bcol].setRevealed(true);
+					}
+				}
+			}
+		}
+	}
 
 	public void respondToInput(String input) {
-		if(input.equals("surfingmouse")) {
+		if(input.toLowerCase().equals("surfingmouse")) {
+			revealBombs(backend.getSquares());
 			backend.setVictorious(true);
 			backend.setPlaying(false);
 		}else {
@@ -138,21 +151,14 @@ public class RickyFrontEnd implements GarrettSupport{
 			int col = Integer.parseInt(input.substring(2));
 			if(!squares[row][col].isRevealed()){
 				if(squares[row][col].isBomb()) {
-					for(int brow = 0; brow < backend.getSquares().length; brow++){
-						for(int bcol = 0; bcol < backend.getSquares()[row].length; bcol++){
-							if(backend.getSquares()[brow][bcol].isBomb()) {
-								if(!backend.getSquares()[brow][bcol].isRevealed()) {
-									backend.getSquares()[brow][bcol].setRevealed(true);
-								}
-							}
-						}
-					}
+					revealBombs(backend.getSquares());
 					backend.setVictorious(false);
 					backend.setPlaying(false);
 				}
 				else if(squares[row][col].getNumberOfBombsCloseby() != 0){
 					squares[row][col].setRevealed(true);
 					if(backend.checkVictorious()) {
+						revealBombs(backend.getSquares());
 						backend.setVictorious(true);
 						backend.setPlaying(false);
 					}
@@ -160,6 +166,7 @@ public class RickyFrontEnd implements GarrettSupport{
 				else{
 					revealAll(squares[row][col]);
 					if(backend.checkVictorious()) {
+						revealBombs(backend.getSquares());
 						backend.setVictorious(true);
 						backend.setPlaying(false);
 					}

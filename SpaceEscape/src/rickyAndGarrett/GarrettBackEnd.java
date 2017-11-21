@@ -66,7 +66,10 @@ public class GarrettBackEnd implements RickySupport{
 	}
 	
 	public boolean validInput(String input) {
-		if(input.equals("surfingmouse")) {
+		if(input.equals("")) {
+			return false;
+		}
+		if(input.toLowerCase().equals("surfingmouse")) {
 			return true;
 		}
 		if(input.substring(1, 2).equals(",") && input.length() == 3) {
