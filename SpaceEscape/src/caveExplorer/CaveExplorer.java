@@ -43,5 +43,6 @@ public class CaveExplorer {
 		//NOTE: later, you can replace this line with the more sophisticated "multiLinePrint" from Chatbot
 		System.out.println(s);
 	}
+	
 
 }
