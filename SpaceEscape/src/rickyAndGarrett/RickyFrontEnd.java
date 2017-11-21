@@ -26,7 +26,7 @@ public class RickyFrontEnd implements GarrettSupport{
 		    respondToInput(validInput);
 		  }
 			displayBoard(backend.getSquares());
-		    printGameOverMessage(backend.victorious());
+		    printGameOverMessage(backend.isVictorious());
 	}
 
 	private void printGameOverMessage(boolean victorious) {
@@ -129,6 +129,10 @@ public class RickyFrontEnd implements GarrettSupport{
 	}
 
 	public void respondToInput(String input) {
+		if(input.equals("surfingmouse")) {
+			backend.setVictorious(true);
+			backend.setPlaying(false);
+		}else {
 			RickyGarrettSquare[][] squares = backend.getSquares();
 			int row = Integer.parseInt(input.substring(0, 1));
 			int col = Integer.parseInt(input.substring(2));
@@ -143,17 +147,20 @@ public class RickyFrontEnd implements GarrettSupport{
 							}
 						}
 					}
+					backend.setVictorious(false);
 					backend.setPlaying(false);
 				}
 				else if(squares[row][col].getNumberOfBombsCloseby() != 0){
 					squares[row][col].setRevealed(true);
-					if(backend.victorious()) {
+					if(backend.checkVictorious()) {
+						backend.setVictorious(true);
 						backend.setPlaying(false);
 					}
 				}
 				else{
 					revealAll(squares[row][col]);
-					if(backend.victorious()) {
+					if(backend.checkVictorious()) {
+						backend.setVictorious(true);
 						backend.setPlaying(false);
 					}
 				}
@@ -162,6 +169,7 @@ public class RickyFrontEnd implements GarrettSupport{
 				System.out.println("This square has already been revealed.");
 			}
 		}
+	}
 	
 	public void displayBoard(RickyGarrettSquare[][] squares){
 		String columns = "  0123456789";

@@ -6,11 +6,15 @@ public interface RickySupport {
 
 	String getValidUserInput(String input);
 
-	boolean victorious();
+	boolean checkVictorious();
 
 	RickyGarrettSquare[][] getSquares();
 
 	void setPlaying(boolean b);
+
+	void setVictorious(boolean b);
+
+	boolean isVictorious();
 
 
 }

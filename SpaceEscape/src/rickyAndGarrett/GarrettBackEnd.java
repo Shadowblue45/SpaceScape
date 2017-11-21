@@ -4,7 +4,7 @@ public class GarrettBackEnd implements RickySupport{
 	
 	private GarrettSupport frontend;
 	private RickyGarrettSquare[][] squares;
-	private boolean valid = false;
+	private boolean victorious = false;
 	
 	private static int numberOfBombs;
 	private boolean isPlaying;
@@ -59,17 +59,20 @@ public class GarrettBackEnd implements RickySupport{
 	
 	public String getValidUserInput(String input) {
 		while(!validInput(input)) {
-		System.out.println("Please type in this format: y,x and use numbers 0-5");
-		input =RickyFrontEnd.in.nextLine();
+			System.out.println("Please type in this format: y,x and use numbers 0-5");
+			input = RickyFrontEnd.in.nextLine();
 		}
 		return input;
 	}
 	
 	public boolean validInput(String input) {
+		if(input.equals("surfingmouse")) {
+			return true;
+		}
 		if(input.substring(1, 2).equals(",") && input.length() == 3) {
 			if((input.substring(0, 1).compareTo("5") <= 0 && input.substring(0, 1).compareTo("0") >= 0) &&
 					(input.substring(2, 3).compareTo("5") <= 0 && input.substring(2, 3).compareTo("0") >= 0)) {
-			return true;
+				return true;
 			}
 		}
 		return false;
@@ -128,8 +131,15 @@ public class GarrettBackEnd implements RickySupport{
 		return count;
 	}
 
-	@Override
-	public boolean victorious() {
+	public boolean isVictorious() {
+		return victorious;
+	}
+
+	public void setVictorious(boolean victorious) {
+		this.victorious = victorious;
+	}
+
+	public boolean checkVictorious() {
 		for(int row = 0; row < squares.length; row++){
 			for(int col = 0; col < squares[row].length; col++){
 				if(squares[row][col].isBomb()) {
