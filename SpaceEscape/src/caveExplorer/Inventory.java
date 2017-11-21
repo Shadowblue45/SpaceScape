@@ -3,7 +3,8 @@ package caveExplorer;
 public class Inventory {
 	
 	private String map;
-
+	private String[] itemsNotPickedUp = {"pipe","spare wheel","battery"};
+	
 	public Inventory() {
 		updateMap();
 	}
@@ -53,4 +54,5 @@ public class Inventory {
 		//return "You have nothing in your inventory.";
 	}
 
+	
 }
