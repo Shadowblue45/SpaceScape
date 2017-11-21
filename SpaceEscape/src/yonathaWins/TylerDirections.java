@@ -10,7 +10,7 @@ public enum TylerDirections {
     }
 
 	   public char validKeys() {
-		   	if( this == TylerDirections.UP)
+		   	if(this == TylerDirections.UP)
 		       return 'w';
 		   	if(this == TylerDirections.DOWN )
 			       return 's';

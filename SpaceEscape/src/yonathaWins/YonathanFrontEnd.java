@@ -21,11 +21,10 @@ public class YonathanFrontEnd implements TylerSupport {
 			};
 	private TylerYonathanPlot[][] flowRoom;
 	private YonathanSupport backend;
-	private int linesComplete;
 	private Object gamePlot;
 	private Cursor cursor;
 	boolean isPlaying = true;
-	int x;
+	static int x;
 	int y;
 	
 	public YonathanFrontEnd(int x, int y) {
@@ -33,7 +32,6 @@ public class YonathanFrontEnd implements TylerSupport {
 		this.y = y;
 		backend = new TylerBackend(this);
 		flowRoom = new TylerYonathanPlot[3][3];
-		linesComplete = 0;
  
 			
 	}
@@ -67,9 +65,10 @@ public class YonathanFrontEnd implements TylerSupport {
 
 	public static void main(String[] args) {
 		
-		YonathanFrontEnd.play();
+		new YonathanFrontEnd().play();
 
 	}
+
     private void play() {
         String lastResponse;
         Scanner scanner = new Scanner(System.in);
