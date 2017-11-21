@@ -14,7 +14,7 @@ public class RickyRoom extends NPCRoom {
 	}
 	
 	public void performAction(int direction) {
-		if(direction == 4) {
+		if(direction != 4) {
 			CaveExplorer.print("There's no one here who is active to talk to you... You're gonna have to wait until the NPC comes back from lunch");
 		}
 			interact();
@@ -35,11 +35,14 @@ public class RickyRoom extends NPCRoom {
 		}
 	}
 	
-	public String getResponse() {
-		return responses[(int)(Math.random()* responses.length)];
-	}
 	public String getContents() {
 		return "B";
+	}
+	
+
+
+	public String getResponse() {
+		return responses[(int)(Math.random()* responses.length)];
 	}
 }
 /*

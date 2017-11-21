@@ -5,6 +5,13 @@ import caveExplorer.CaveRoom;
 
 public class DavidRoom extends CaveRoom {
 	
+	private boolean active = true;
+	private static int ROCK = 0;
+	private static int PAPER = 1;
+	private static int SCISSORS = 2;
+	private int numOfGames = 1;
+	
+	
 	public DavidRoom(String description) {
 		super(description);
 	}
@@ -27,12 +34,35 @@ public class DavidRoom extends CaveRoom {
 	}
 	
 	public void interact() {
-		CaveExplorer.print("You must answer the problem to pass! What is 1+1");
-		String s = CaveExplorer.in.nextLine();
-		while(!s.equalsIgnoreCase("2") || !s.equalsIgnoreCase("two")) {
-			CaveExplorer.print("That's not the answer");
+		if(active) {
+			CaveExplorer.print("Verse me in rock paper scissors! First to win!\nType 'r', 's' or 'p' to choose rock paper or scissors respectively.");
+			String s = CaveExplorer.in.nextLine();
+			while(!s.equalsIgnoreCase("r")) {
+				if(s.equalsIgnoreCase("s")) {
+					CaveExplorer.print("I chose scissors too! We tie");
+					numOfGames++;
+				}
+				if(s.equalsIgnoreCase("p")) {
+					CaveExplorer.print("I chose scissors! You lose, try again until you win!");
+					numOfGames++;
+				}else {
+					CaveExplorer.print("That's not a choice!");
+				}
+					s = CaveExplorer.in.nextLine();
+			}
+			CaveExplorer.print("You have beat me in this game, my choices the same. Now tell me how many tries, including our ties, it took you to win.");
 			s = CaveExplorer.in.nextLine();
+			int answer = Integer.valueOf(s);
+			while(answer != numOfGames) {
+				CaveExplorer.print("Thats not the answer!");
+				s = CaveExplorer.in.nextLine();
+				
+				answer = Integer.valueOf(s);
+			}
+			CaveExplorer.print("Congradulations you beat me!");
+			active = false;
+		}else {
+			CaveExplorer.print("You already beat me in RPS!");
 		}
-		CaveExplorer.print("You're not an idiot!");
 	}
 }
