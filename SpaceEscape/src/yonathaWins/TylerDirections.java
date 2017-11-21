@@ -1,7 +1,7 @@
 package yonathaWins;
 
 public enum TylerDirections {
-	UP, DOWN, LEFT, RIGHT, TylerDirections;
+	UP, DOWN, LEFT, RIGHT;
 	
 
     public String getRepresentation() {
@@ -18,7 +18,7 @@ public enum TylerDirections {
 		       return 'a';
 		   	if (this.TylerDirections == RIGHT)
 			       return 'd';
-		     return '?';
+		    return '?';
 	   }
 	    public char forBoard() {
 		   	if(this.TylerDirections == UP)

@@ -4,6 +4,11 @@ import java.util.stream.Stream;
 
 public class TylerBackend implements YonathanSupport {
 
+	
+	private static final TylerDirections UP;
+	private static final TylerDirections DOWN;
+	private static final TylerDirections LEFT;
+	private static final TylerDirections RIGHT;
 	//go to yonathan backend, make 2d array, define proportions
 	//
 	public boolean isPlaying;
@@ -46,11 +51,34 @@ public class TylerBackend implements YonathanSupport {
 		return false;
 	}
 
+	public TylerYonathanPlot getPoint(TylerYonathanPlot[][] plot, TylerDirections dir) {
+		if (dir == UP) {
+			return accessPoint(plot, x - 1, y);
+		}
+		if(dir == DOWN) {
+			return accessPoint(plot, x + 1, y);
+		}
+		if(dir == LEFT) {
+			return accessPoint(plot, x, y - 1);
+		}
+		if(dir == RIGHT)	{
+			return accessPoint(plot, x, y + 1);
+		}
+	}
+	
+	private TylerYonathanPlot accessPoint(TylerYonathanPlot[][] plot, int x, int y) {
+		if(x < plot.length || x >= 0 ||  y < plot.length || y >= 0 )
+			return plot[x][y];
+	}
+
 	private static Object values() {
 		// TODO Auto-generated method stub
 		return null; 
 	}
-
+    private boolean isMovable(TylerYonathanPlot point) {
+        return (TylerYonathanPlot.getIdentifier().isPresent() && Game.IMMOVABLE_POINTS().contains(point.getIdentifier().get())) && point.getIdentifier().isPresent();
+    }
+	
 	public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || o.getClass().isAssignableFrom(getClass())) return false;

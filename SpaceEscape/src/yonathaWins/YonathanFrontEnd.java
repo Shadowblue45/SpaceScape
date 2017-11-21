@@ -2,6 +2,7 @@ package yonathaWins;
 
 import java.awt.Cursor;
 import java.util.Scanner;
+import java.util.StringJoiner;
 import java.util.stream.Stream;
 
 public class YonathanFrontEnd implements TylerSupport {
@@ -22,6 +23,7 @@ public class YonathanFrontEnd implements TylerSupport {
 	private int linesComplete;
 	private Object gamePlot;
 	private Cursor cursor;
+	boolean isPlaying = true;
 	int x;
 	int y;
 	
@@ -60,15 +62,7 @@ public class YonathanFrontEnd implements TylerSupport {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	private void displayFlow() {
-		System.out.println("____");
-		for(int row = 0; row < flowRoom.length; row++){
-			System.out.println("|");
-			for(int col = 0; col < flowRoom[row].length; col++){
-				flowRoom[row][col] = new TylerYonathanPlot(col, col);
-				}
-		}
-	}
+
 
 	public static void main(String[] args) {
 		
@@ -79,7 +73,7 @@ public class YonathanFrontEnd implements TylerSupport {
         String lastResponse;
         Scanner scanner = new Scanner(System.in);
         Boolean printedBoard = false;
-        do {
+        while(isPlaying) {
             if (!printedBoard) {
                 printBoard();
                 printedBoard = true;
@@ -93,7 +87,7 @@ public class YonathanFrontEnd implements TylerSupport {
                 final TylerYonathanPlot destination = this.cursor.getPoint(this.gamePlot, dir).get();
                 if (destination.getIdentifier().isPresent() && destination.getIdentifier().get().equals('e')) {
                 	printGameOverMessage() ;
-                    break;
+                	isPlaying = false;
                 }
                 this.cursor.move(gamePlot, dir);
             } else {
@@ -104,7 +98,14 @@ public class YonathanFrontEnd implements TylerSupport {
 
     }
 	
-    private boolean needsToEnd(String lastResponse) {
+    private void printOptions() {
+    	final TylerDirections[] possible = cursor.possibleDirections(this.gamePlot);
+        final StringJoiner joiner = new StringJoiner(", ");
+        Stream.of(possible).forEach((dir) -> joiner.add(dir.getRepresentation()));
+        System.out.printf("Options: %s.\n", joiner.toString());
+		
+	}
+	private boolean needsToEnd(String lastResponse) {
         final String[] end = new String[]{"q", "quit", "exit", "bye", "leave"};
         return Stream.of(end).anyMatch((String x) -> lastResponse.toLowerCase().contains(x));
     }
