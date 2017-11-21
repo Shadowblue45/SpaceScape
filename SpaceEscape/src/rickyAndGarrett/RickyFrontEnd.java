@@ -179,27 +179,27 @@ public class RickyFrontEnd implements GarrettSupport{
 	}
 	
 	public void displayBoard(RickyGarrettSquare[][] squares){
-		String columns = "  0123456789";
+		String columns = "  0 1 2 3 4 5 6 7 8 9";
 		for(int row = 0; row < squares.length; row++) {
 			System.out.print(row + " ");
 			for(int col = 0; col < squares[row].length;col++) {
 				if(squares[row][col].isRevealed()) {
 					if(squares[row][col].isBomb()) {
-						System.out.print("B");
+						System.out.print("B ");
 					}else if(squares[row][col].getNumberOfBombsCloseby() != 0) {
 						System.out.print(squares[row][col].getNumberOfBombsCloseby());
 					}
 					else {
-						System.out.print(" ");
+						System.out.print("  ");
 					}
 				}
 				else {
-					System.out.print(".");
+					System.out.print(". ");
 				}
 			}
 			System.out.println(" " + row);
 		}
-		System.out.println(columns.substring(0, squares[0].length+2));
+		System.out.println(columns.substring(0, 2 * squares[0].length+2));
 	}
 
 	public RickyFrontEnd(){
