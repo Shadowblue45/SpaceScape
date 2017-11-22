@@ -178,7 +178,6 @@ public class CaveRoom {
 	}
 
 	/**
-	 * This will be where your group sets up all the caves
 	 * and all the connections
 	 */
 	public static void setUpCaves() {
@@ -205,7 +204,7 @@ public class CaveRoom {
 
 		CaveRoom customGar = new GarrettRoom("Trivia Room");
 		CaveExplorer.caves[0][3] = customGar;
-		CaveRoom customRoomRicky = new RickyRoom("Break Room");
+		CaveRoom customRoomRicky = new RickyRoom("Minesweeper Room");
 		CaveExplorer.caves[0][4] = customRoomRicky;
 
 		
@@ -223,8 +222,8 @@ public class CaveRoom {
 
 		CaveRoom customRoom = new TylerCave("Room");
 		CaveExplorer.caves[1][0] = customRoom;
-		CaveRoom yoanthanRoom = new YonathanWinsAgain("Room");
-		CaveExplorer.caves[0][0] = yoanthanRoom;
+		CaveRoom flowRoom = new YonathanWinsAgain("Room");
+		CaveExplorer.caves[0][0] = flowRoom;
 
 		
 		//4. Set your starting room:

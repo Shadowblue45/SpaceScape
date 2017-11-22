@@ -16,6 +16,7 @@ public class RickyRoom extends NPCRoom {
 	public void performAction(int direction) {
 		if(direction == 4) {
 			CaveExplorer.print("There's no one here who is active to talk to you... You're gonna have to wait until the NPC comes back from lunch");
+			CaveExplorer.print("You can play the NPC's minigame while you wait");
 			RickyFrontEnd.main(null);
 		}
 		else {
