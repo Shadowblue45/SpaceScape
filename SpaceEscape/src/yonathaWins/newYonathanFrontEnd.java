@@ -8,24 +8,36 @@ package yonathaWins;
  * 5. stop running code 
  */
 public class newYonathanFrontEnd implements TylerSupport {
-	private int endIntX;
-	private int endInty;
-	private int startIntX;
-	private int startInty;
+	public static int endIntX;
+	public static int endIntY;
+	public static int startIntX;
+	public static int startIntY;
+	static boolean checkWin = false;
 	public static void main(String[] args) {
 		String[][] board = new String[5][5];
 		for(int x = 0; x<board.length; x++) {
 			for(int y =0; y<board[x].length;y++) {
-				board[x][y]= "b";
+				board[x][y]= ". ";
 			}
 		}
+		while(!checkWin)) {
+			
 		print(board);
+		}
 	}
 	
 	private static void print(String[][] board) {
 		String currentLine = "";
-		board[2][3] = "a";
-		endIntX = (int)(Math.random)
+		endIntY = (int)(Math.random()*5);
+		endIntX = (int)(Math.random()*5);
+		board[endIntX][endIntY] = "e ";
+		startIntY = (int)(Math.random()*5);
+		startIntX = (int)(Math.random()*5);
+		while(startIntY==endIntY && startIntX==endIntX ) {
+			startIntY = (int)(Math.random()*5);
+			startIntX = (int)(Math.random()*5);
+		}
+		board[startIntX][startIntY] = "s ";
 		for(int y =4; y>-1;y--) {
 			for(int x =0; x<board[y].length;x++) {
 				currentLine += board[x][y];	
