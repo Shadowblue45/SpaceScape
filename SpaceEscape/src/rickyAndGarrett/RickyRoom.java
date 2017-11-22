@@ -38,7 +38,7 @@ public class RickyRoom extends NPCRoom {
 	}
 	
 	public String getContents() {
-		return "B";
+		return "S";
 	}
 	
 
