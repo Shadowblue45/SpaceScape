@@ -3,6 +3,7 @@ package caveExplorer;
 
 import fahadAndDavid.DavidRoom;
 import fahadAndDavid.FahadRoom;
+import fahadAndDavid.LightsOut;
 import rickyAndGarrett.GarrettRoom;
 import rickyAndGarrett.RickyRoom;
 import yonathaWins.TylerCave;
@@ -188,6 +189,8 @@ public class CaveRoom {
 		CaveExplorer.caves[0][2] = customFahad;
 		CaveRoom customDavid = new DavidRoom("Maths Room");
 		CaveExplorer.caves[1][2] = customDavid;
+		CaveRoom customLightsOut = new LightsOut("Jotaro's Room");
+		CaveExplorer.caves[2][2] = customLightsOut;
 		//--- WE WILL DO LATER
 		
 		
@@ -221,6 +224,7 @@ public class CaveRoom {
 		c[0][0].setConnection(SOUTH, c[1][0], new Door());
 		c[0][1].setConnection(WEST, c[0][0], new Door());
 		c[0][2].setConnection(SOUTH, c[1][2], new Door());
+		c[1][2].setConnection(SOUTH, c[2][2], new Door());
 	}
 
  

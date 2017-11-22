@@ -7,5 +7,9 @@ public class LightsOut extends CaveRoom {
 	public LightsOut(String description) {
 		super(description);
 	}
+	public void enter() {
+		super.enter();
+		FahadFrontend.main(null);
+	}
 
 }
