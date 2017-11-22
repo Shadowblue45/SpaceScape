@@ -11,7 +11,7 @@ public class FahadRoom extends CaveRoom {
 	
 	public FahadRoom(String description) {
 		super(description);
-		this.activeDescription = "There is a person waiting to talk to you.";
+		this.activeDescription = "You feel a menacing aura.";
 		this.inactiveDescription = "The person you spoke to earlier is standing here.";
 		this.active = true;
 	}
@@ -47,7 +47,7 @@ public class FahadRoom extends CaveRoom {
 	}
 	
 	public String getContents() {
-		return "D";
+		return "J";
 	}
 	
 	public boolean isActive() {

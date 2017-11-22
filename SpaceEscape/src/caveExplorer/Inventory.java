@@ -3,6 +3,7 @@ package caveExplorer;
 public class Inventory {
 	
 	private String map;
+	private boolean jotaroInParty;
 
 	public Inventory() {
 		updateMap();
