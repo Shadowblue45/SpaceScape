@@ -185,7 +185,7 @@ public class CaveRoom {
 			}
 		}
 		//3. Replace default rooms with custom rooms
-		CaveRoom customFahad = new FahadRoom("Jotaro's Room");
+		CaveRoom customFahad = new FahadRoom("Josuke's Room");
 		CaveExplorer.caves[0][2] = customFahad;
 		CaveRoom customDavid = new DavidRoom("Maths Room");
 		CaveExplorer.caves[1][2] = customDavid;
