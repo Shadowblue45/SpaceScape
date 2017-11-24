@@ -6,6 +6,8 @@ import java.util.in;
 public class NewTylerBackEnd {
 
 	private boolean valid = false;
+	String currentY;
+	String currentX;
 	
 	public NewTylerBackEnd() {
 		// TODO Auto-generated constructor stub
@@ -24,11 +26,14 @@ public class NewTylerBackEnd {
 		return input;
 	}
 	private void move(String input) {
-		if(input.equals("a")) {
-			if()
-		}
+
 		if(input.equals("w")) {
 			
+
+		}
+		if(input.equals("a")) {
+			
+				
 		}
 		if(input.equals("s")) {
 			
@@ -42,10 +47,35 @@ public class NewTylerBackEnd {
 		if(input.length() != 1 && input.equals("jeff") == false) {
 			return false;
 		}
-		if(input.equals("w") || input.equals("a") || input.equals("s") || input.equals("d") )
-		{if()
+		if(input.equals("w")) {
+			if(currentX.equals("0"))
+			{
+				return false;
+			}				
 			return true;
 		}
+		if(input.equals("a")) {
+			if(currentY.equals("0"))
+			{
+				return false;
+			}				
+			return true;
+		}
+		if(input.equals("s")) {
+			if(currentX.equals("4"))
+			{
+				return false;
+			}				
+			return true;
+		}
+		if(input.equals("d")) {
+			if(currentY.equals("4"))
+			{
+				return false;
+			}				
+			return true;
+		}
+		
 		return false;
 	}
 	
