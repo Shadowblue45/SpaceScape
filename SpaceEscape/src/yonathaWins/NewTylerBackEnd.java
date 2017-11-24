@@ -42,7 +42,8 @@ public class NewTylerBackEnd {
 		if(input.length() != 1 && input.equals("jeff") == false) {
 			return false;
 		}
-		if(input.equals("w") || input.equals("a") || input.equals("s") || input.equals("d") ) {
+		if(input.equals("w") || input.equals("a") || input.equals("s") || input.equals("d") )
+		{if()
 			return true;
 		}
 		return false;
