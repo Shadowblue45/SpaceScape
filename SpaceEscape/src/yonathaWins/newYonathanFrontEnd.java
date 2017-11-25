@@ -15,15 +15,16 @@ public class newYonathanFrontEnd implements TylerSupport {
 	public static String startIntX="";
 	public static String startIntY="";
 	public static int incompleteLine =0;
-	/*
-	public static String orientation[]= {	"___\n|"+identifier()+" \n|  " ,
-			"___\n "+identifier()+"|\n ___",
-			"___\n "+identifier()+" \n___" ,
-			"| |\n|"+identifier()+"|\n| |",
-			"|  \n|"+identifier()+" \n___",
-			"  |\n "+identifier()+"|\n___"
+	static int identifier=0;
+	
+	public static String orientation[]= {	"___\n|"+identifier+" \n|  " ,
+			"___\n "+identifier+"|\n ___",
+			"___\n "+identifier+" \n___" ,
+			"| |\n|"+identifier+"|\n| |",
+			"|  \n|"+identifier+" \n___",
+			"  |\n "+identifier+"|\n___"
 	};
-	*/
+
 	public static String filler=" .";
 	static boolean checkWin = false;
 	public static String[][] board = new String[3][3];
@@ -37,8 +38,11 @@ public class newYonathanFrontEnd implements TylerSupport {
 			NewTylerBackEnd.segX[i]=-1;
 			NewTylerBackEnd.segY[i]=-1;
 		}
+		makeGoal((int)(Math.random()*2+1));
+		NewTylerBackEnd.currentX=Integer.parseInt(startIntX.substring(identifier,identifier+1));
+		NewTylerBackEnd.currentY=Integer.parseInt(startIntY.substring(identifier,identifier+1));
 		
-		while(incompleteLine<4) {
+		while(incompleteLine<10) {
 			
 		print(board);
 		System.out.println(startIntX+" "+startIntY+" "+endIntY+" "+endIntY);
@@ -50,8 +54,9 @@ public class newYonathanFrontEnd implements TylerSupport {
 		}
 		String userInput = NewTylerBackEnd.validMove(input);
 		makeChange(userInput);
-		//System.out.println(NewTylerBackEnd.setOrientation());
 		
+		//identifier();
+		//System.out.println(identifier);
 		
 		incompleteLine++;
 		}
@@ -61,15 +66,25 @@ public class newYonathanFrontEnd implements TylerSupport {
 	private static void makeChange(String input) {
 		
 		if(!input.equals("e")) {
-			NewTylerBackEnd.move(input);	
+			NewTylerBackEnd.move(input);
+			if(NewTylerBackEnd.currentX!=Integer.parseInt(endIntX.substring(identifier,identifier+1)) || NewTylerBackEnd.currentY!=Integer.parseInt(endIntY.substring(identifier,identifier+1))) {
+				setUpOrientation();
+			}else {
+				
+			}
 		}else {
 			
 		}
 		
 	}
 
-	private static int identifier(int identifier) {
+	private static void setUpOrientation() {
+		//checks if segx[] and y are set up and if you can use set orientation then uses it
 		
+	}
+
+	private static int identifier() {
+		identifier++;
 		if(identifier>startIntX.length()-1) {
 			identifier=0;
 		}
@@ -78,7 +93,7 @@ public class newYonathanFrontEnd implements TylerSupport {
 
 	private static void print(String[][] board) {
 		String currentLine = "";
-		makeGoal((int)(Math.random()*2+1));
+		
 		//board[0][0]=" a";
 		for(int y =board.length-1; y>-1;y--) {
 			for(int x =0; x<board[y].length;x++) {

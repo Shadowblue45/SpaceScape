@@ -89,14 +89,14 @@ public class NewTylerBackEnd {
 			return false;
 		}
 		if(input.equals("w")) {
-			if(currentY == 4)
+			if(currentY == newYonathanFrontEnd.board.length-1)
 			{
 				return false;
 			}				
 			return true;
 		}
 		if(input.equals("a")) {
-			if(currentX == 4)
+			if(currentX == 0)
 			{
 				return false;
 			}				
@@ -110,7 +110,7 @@ public class NewTylerBackEnd {
 			return true;
 		}
 		if(input.equals("d")) {
-			if(currentX==0)
+			if(currentX==newYonathanFrontEnd.board.length-1)
 			{
 				return false;
 			}				
