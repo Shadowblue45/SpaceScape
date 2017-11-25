@@ -48,28 +48,28 @@ public class NewTylerBackEnd {
 			return false;
 		}
 		if(input.equals("w")) {
-			if(currentX.equals("0"))
+			if(currentY.equals("4"))
 			{
 				return false;
 			}				
 			return true;
 		}
 		if(input.equals("a")) {
-			if(currentY.equals("0"))
-			{
-				return false;
-			}				
-			return true;
-		}
-		if(input.equals("s")) {
 			if(currentX.equals("4"))
 			{
 				return false;
 			}				
 			return true;
 		}
+		if(input.equals("s")) {
+			if(currentY.equals("0"))
+			{
+				return false;
+			}				
+			return true;
+		}
 		if(input.equals("d")) {
-			if(currentY.equals("4"))
+			if(currentX.equals("0"))
 			{
 				return false;
 			}				
