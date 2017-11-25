@@ -46,7 +46,7 @@ public class NewTylerBackEnd {
 		}
 	}
 
-	public static int setOrientation() {
+	public static int setOrientation(String input) {
 	    if(segX[2]-segX[1]<0)        {
 	        if(segX[1]-segX[0]<0)
 	        return 0;//straight line 
