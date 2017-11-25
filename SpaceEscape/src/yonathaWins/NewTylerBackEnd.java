@@ -53,7 +53,7 @@ public class NewTylerBackEnd {
 	        if(segY[1]-segY[0]<0)
 	        return 1;//corner up from left
 	        if(segY[1]-segY[0]>0)
-	        return 2;//corner down from left
+	        return 2;//corner down from left 
 	    }
 
 	    else if(segX[2]-segX[1]>0) {

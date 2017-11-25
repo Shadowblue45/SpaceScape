@@ -79,7 +79,7 @@ public class newYonathanFrontEnd implements TylerSupport {
 	}
 
 	private static void setUpOrientation() {
-		//checks if segx[] and y are set up and if you can use set orientation then uses it
+		//checks if segx[] and y are  set up and if you can use set orientation then uses it
 		
 	}
 
