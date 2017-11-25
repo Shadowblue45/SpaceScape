@@ -21,14 +21,14 @@ public class NewTylerBackEnd {
 
 	}
 	public static String validMove(String input) {
-		while(!valid) {
-		System.out.println("please enter a for left, s for down, d for right or w for down");
+		while(!ifValid(input)) {
+		System.out.println("please enter a for left, s for down, d for right or w for down, e to change lines");
 		input = in.nextLine();
 		}
-		move(input);
+		
 		return input;
 	}
-	private static void move(String input) {
+	public static void move(String input) {
 
 		if(input.equals("w")) {
 			currentY++;
@@ -84,7 +84,7 @@ public class NewTylerBackEnd {
 		return -1;
 
 	        }
-	public boolean ifValid(String input) {
+	public static boolean ifValid(String input) {
 		if(input.length() != 1 && input.equals("jeff") == false) {
 			return false;
 		}

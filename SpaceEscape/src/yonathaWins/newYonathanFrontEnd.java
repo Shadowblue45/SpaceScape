@@ -15,30 +15,41 @@ public class newYonathanFrontEnd implements TylerSupport {
 	public static String startIntX="";
 	public static String startIntY="";
 	public static int incompleteLine =0;
+	/*
+	public static String orientation[]= {	"___\n|"+identifier()+" \n|  " ,
+			"___\n "+identifier()+"|\n ___",
+			"___\n "+identifier()+" \n___" ,
+			"| |\n|"+identifier()+"|\n| |",
+			"|  \n|"+identifier()+" \n___",
+			"  |\n "+identifier()+"|\n___"
+	};
+	*/
+	public static String filler=" .";
 	static boolean checkWin = false;
 	public static String[][] board = new String[3][3];
 	public static void main(String[] args) {
-		
 		for(int x = 0; x<board.length; x++) {
 			for(int y =0; y<board[x].length;y++) {
-				board[x][y]= " .";
+				board[x][y]= filler;
 			}
 		}
 		for(int i=0;i<3;i++) {
 			NewTylerBackEnd.segX[i]=-1;
 			NewTylerBackEnd.segY[i]=-1;
 		}
+		
 		while(incompleteLine<4) {
 			
 		print(board);
 		System.out.println(startIntX+" "+startIntY+" "+endIntY+" "+endIntY);
+		
 		
 		String input = NewTylerBackEnd.in.nextLine();
 		if(input.equals("jeff")) {
 			break;
 		}
 		String userInput = NewTylerBackEnd.validMove(input);
-		
+		makeChange(userInput);
 		//System.out.println(NewTylerBackEnd.setOrientation());
 		
 		
@@ -47,6 +58,24 @@ public class newYonathanFrontEnd implements TylerSupport {
 		System.out.println("a");
 	}
 	
+	private static void makeChange(String input) {
+		
+		if(!input.equals("e")) {
+			NewTylerBackEnd.move(input);	
+		}else {
+			
+		}
+		
+	}
+
+	private static int identifier(int identifier) {
+		
+		if(identifier>startIntX.length()-1) {
+			identifier=0;
+		}
+		return identifier;
+	}
+
 	private static void print(String[][] board) {
 		String currentLine = "";
 		makeGoal((int)(Math.random()*2+1));
@@ -68,11 +97,11 @@ public class newYonathanFrontEnd implements TylerSupport {
 		int startX = (int)(Math.random()*board.length);
 		
 		//fix these while loops so that they make sure that code isnt printed over
-		while(startY==endY && startX==endX || board[startX][startY].equals(" .")!=true) {
+		while(startY==endY && startX==endX || board[startX][startY].equals(filler)!=true) {
 			startY = (int)(Math.random()*board.length);
 			startX = (int)(Math.random()*board.length);
 		}
-		while(startY==endY && startX==endX || board[endX][endY].equals(" .")!=true) {
+		while(startY==endY && startX==endX || board[endX][endY].equals(filler)!=true) {
 			endY = (int)(Math.random()*board.length);
 			endX = (int)(Math.random()*board.length);
 		}
