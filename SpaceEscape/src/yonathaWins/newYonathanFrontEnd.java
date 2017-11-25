@@ -6,6 +6,8 @@ package yonathaWins;
  * 3. display something to user (stop making flow all your realy doing is displaying flow not actualy making it)
  * 4. check if user won (when the two points are made start and end the end is saved unto two variables endIntX endIntY)
  * 5. stop running code 
+ * when code start define each segX and segY equal to -1
+ * ask tyler to change isvalid to return the string that was inputed
  */
 public class newYonathanFrontEnd implements TylerSupport {
 	public static String endIntX ="";
@@ -22,11 +24,27 @@ public class newYonathanFrontEnd implements TylerSupport {
 				board[x][y]= " .";
 			}
 		}
-		//while(!checkWin) {
-		//String input = in.nextLine();
+		for(int i=0;i<3;i++) {
+			NewTylerBackEnd.segX[i]=-1;
+			NewTylerBackEnd.segY[i]=-1;
+		}
+		while(incompleteLine<4) {
+			
 		print(board);
 		System.out.println(startIntX+" "+startIntY+" "+endIntY+" "+endIntY);
-		//}
+		
+		String input = NewTylerBackEnd.in.nextLine();
+		if(input.equals("jeff")) {
+			break;
+		}
+		String userInput = NewTylerBackEnd.validMove(input);
+		
+		//System.out.println(NewTylerBackEnd.setOrientation());
+		
+		
+		incompleteLine++;
+		}
+		System.out.println("a");
 	}
 	
 	private static void print(String[][] board) {
@@ -50,11 +68,11 @@ public class newYonathanFrontEnd implements TylerSupport {
 		int startX = (int)(Math.random()*board.length);
 		
 		//fix these while loops so that they make sure that code isnt printed over
-		while(startY==endY && startX==endX && board[startX][startY].equals(" .")==true) {
+		while(startY==endY && startX==endX || board[startX][startY].equals(" .")!=true) {
 			startY = (int)(Math.random()*board.length);
 			startX = (int)(Math.random()*board.length);
 		}
-		while(startY==endY && startX==endX && board[endX][endY].equals(" .")==true) {
+		while(startY==endY && startX==endX || board[endX][endY].equals(" .")!=true) {
 			endY = (int)(Math.random()*board.length);
 			endX = (int)(Math.random()*board.length);
 		}

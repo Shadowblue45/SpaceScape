@@ -1,13 +1,13 @@
 package yonathaWins;
 
-import java.util.Scanner; 
-import java.util.in;
+import java.util.Scanner;
+
 
 public class NewTylerBackEnd {
-
-	private boolean valid = false;
-	int currentY;
-	int  currentX;
+	public static Scanner in = new Scanner(System.in);
+	private static boolean valid = false;
+	static int currentY;
+	static int  currentX;
 	static int[] segX = new int[3];
 	static int[] segY = new int[3];
 
@@ -20,15 +20,15 @@ public class NewTylerBackEnd {
 		// TODO Auto-generated method stub
 
 	}
-	public String validMove(String input) {
+	public static String validMove(String input) {
 		while(!valid) {
 		System.out.println("please enter a for left, s for down, d for right or w for down");
-		input = newYonathanFrontEnd.in.nextLine();
+		input = in.nextLine();
 		}
 		move(input);
 		return input;
 	}
-	private void move(String input) {
+	private static void move(String input) {
 
 		if(input.equals("w")) {
 			currentY++;
@@ -118,7 +118,7 @@ public class NewTylerBackEnd {
 		}
 		if(input.equals("e"))
 		{
-			newYonathanFrontEnd.toggle(input);
+			//newYonathanFrontEnd.toggle(input);
 			return true;
 		}
 		return false;
