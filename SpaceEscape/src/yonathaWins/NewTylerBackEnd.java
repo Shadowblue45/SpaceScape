@@ -8,8 +8,9 @@ public class NewTylerBackEnd {
 	private boolean valid = false;
 	int currentY;
 	int  currentX;
-	int[] segX;
-	int[] segY;
+	static int[] segX = new int[3];
+	static int[] segY = new int[3];
+
 	
 	public NewTylerBackEnd() {
 		// TODO Auto-generated constructor stub
@@ -45,7 +46,7 @@ public class NewTylerBackEnd {
 		}
 	}
 
-	public int setOrientation() {
+	public static int setOrientation() {
 	    if(segX[2]-segX[1]<0)        {
 	        if(segX[1]-segX[0]<0)
 	        return 0;//straight line 
@@ -80,6 +81,7 @@ public class NewTylerBackEnd {
 	        if(segY[1]-segY[0]>0)
 	        return 5;//vertical line
 	    }
+		return -1;
 
 	        }
 	public boolean ifValid(String input) {
