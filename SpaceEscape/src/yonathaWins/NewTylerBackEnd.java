@@ -6,8 +6,8 @@ import java.util.in;
 public class NewTylerBackEnd {
 
 	private boolean valid = false;
-	String currentY;
-	String currentX;
+	int currentY;
+	int  currentX;
 	int[] segX;
 	int[] segY;
 	
@@ -30,18 +30,18 @@ public class NewTylerBackEnd {
 	private void move(String input) {
 
 		if(input.equals("w")) {
-			
+			currentY++;
 
 		}
 		if(input.equals("a")) {
-			
+			currentX++;
 				
 		}
 		if(input.equals("s")) {
-			
+			currentY--;
 		}
 		if(input.equals("d")) {
-			
+			currentX--;
 		}
 	}
 
@@ -87,34 +87,38 @@ public class NewTylerBackEnd {
 			return false;
 		}
 		if(input.equals("w")) {
-			if(currentY.equals("4"))
+			if(currentY == 4)
 			{
 				return false;
 			}				
 			return true;
 		}
 		if(input.equals("a")) {
-			if(currentX.equals("4"))
+			if(currentX == 4)
 			{
 				return false;
 			}				
 			return true;
 		}
 		if(input.equals("s")) {
-			if(currentY.equals("0"))
+			if(currentY == 0)
 			{
 				return false;
 			}				
 			return true;
 		}
 		if(input.equals("d")) {
-			if(currentX.equals("0"))
+			if(currentX==0)
 			{
 				return false;
 			}				
 			return true;
 		}
-		
+		if(input.equals("e"))
+		{
+			newYonathanFrontEnd.toggle(input);
+			return true;
+		}
 		return false;
 	}
 	
