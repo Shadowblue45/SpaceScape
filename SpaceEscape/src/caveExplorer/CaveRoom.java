@@ -1,13 +1,24 @@
 
+
 package caveExplorer;
+
+
+
 
 import fahadAndDavid.DavidRoom;
 import fahadAndDavid.FahadRoom;
 import fahadAndDavid.LightsOut;
 import rickyAndGarrett.GarrettRoom;
 import rickyAndGarrett.RickyRoom;
+import yonathaWins.GameStarter;
 import yonathaWins.TylerCave;
+
 import yonathaWins.YonathanWinsAgain;//github.com/Shadowblue45/SpaceScape.git
+
+
+import yonathaWins.TylerCave;
+import yonathaWins.YonathanWinsAgain;
+
 
 public class CaveRoom {
 	
@@ -206,7 +217,6 @@ public class CaveRoom {
 	}
 
 	/**
-	 * This will be where your group sets up all the caves
 	 * and all the connections
 	 */
 	public static void setUpCaves() {
@@ -229,13 +239,14 @@ public class CaveRoom {
 		CaveExplorer.caves[1][2] = customDavid;
 		CaveRoom customLightsOut = new LightsOut("Lights Out");
 		CaveExplorer.caves[2][2] = customLightsOut;
+		CaveExplorer.caves[1][2] = customDavid;
 		//--- WE WILL DO LATER
 		
 		
 
 		CaveRoom customGar = new GarrettRoom("Trivia Room");
 		CaveExplorer.caves[0][3] = customGar;
-		CaveRoom customRoomRicky = new RickyRoom(" Break Room");
+		CaveRoom customRoomRicky = new RickyRoom("Minesweeper Room");
 		CaveExplorer.caves[0][4] = customRoomRicky;
 
 		
@@ -243,18 +254,35 @@ public class CaveRoom {
 		CaveExplorer.npcs[0] = new NPC();
 		CaveExplorer.npcs[0].setPosition(1, 1);
 
+
 		//ad each person room like this
+
 		CaveRoom customTyler = new TylerCave("Room");
 		CaveExplorer.caves[1][0] = customTyler;
-		CaveRoom customYonathan = new YonathanWinsAgain("Room");
+		CaveRoom customYonathan = new GameStarter("Room");
 		CaveExplorer.caves[0][0] = customYonathan;
+		CaveRoom flowYonathan = new GameStarter("Room");
+		CaveExplorer.caves[0][0] = flowYonathan;
+		CaveRoom flowRoom = new YonathanWinsAgain("Room");
+		CaveExplorer.caves[0][0] = flowRoom;
+
 		
 		//4. Set your starting room:
 		CaveExplorer.currentRoom = CaveExplorer.caves[0][1];
 		CaveExplorer.currentRoom.enter();
 		//5. Set up doors
+
 		CaveRoom[][] c = CaveExplorer.caves;
+
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
+		
+		Door locked = new Door();
+		locked.setOpen(false);
+		locked.setLocked(true);
+		c[0][1].setConnection(SOUTH, c[1][1], new Door());
+
+		c[0][0].setConnection(SOUTH, c[1][0], locked);
+
 		c[0][1].setConnection(WEST, c[0][0], new Door());
 		c[0][1].setConnection(EAST, c[0][2], new Door());
 		c[0][2].setConnection(EAST, c[0][3], new Door());
