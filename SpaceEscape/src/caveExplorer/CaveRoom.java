@@ -221,8 +221,6 @@ public class CaveRoom {
 		CaveExplorer.caves[0][0] = customYonathan;
 		CaveRoom flowYonathan = new GameStarter("Room");
 		CaveExplorer.caves[0][0] = flowYonathan;
-		CaveRoom customTyler = new TylerCave("Room");
-		CaveExplorer.caves[3][3] = customTyler;
 		CaveRoom flowRoom = new YonathanWinsAgain("Room");
 		CaveExplorer.caves[0][0] = flowRoom;
 
