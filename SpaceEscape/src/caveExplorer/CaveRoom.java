@@ -18,6 +18,7 @@ public class CaveRoom {
 	//the rooms are organized by directions, 'null' signifies no room/door in that direction
 	private CaveRoom[] borderingRooms;
 	private Door[] doors;
+	private boolean directionNotChosen = true;
 	
 	//constants
 	public static final int NORTH = 0;
@@ -124,25 +125,25 @@ public class CaveRoom {
 	 * @return
 	 */
 	public String validKeys() {
-		return "wdsa";
+		return "wdsaer";
 	}
 	
 	/**
 	 * override to print a custom string describing what keys do
 	 */
 	public void printAllowedEntry() {
-		System.out.println("You can only enter 'w', 'a', 's', or 'd'.");
+		System.out.println("You can only enter 'w', 'a', 's', 'd', or 'r'.");
 	}
 
 
-	private boolean isValid(String input) {
+	public boolean isValid(String input) {
 		String validEntries = validKeys();
 		//System.out.print("Checking for input " + input + ", got index " + validEntries.indexOf(input));
 		return validEntries.indexOf(input) > -1 && input.length() == 1;
 	}
 
 
-	private void respondToKey(int direction) {
+	public void respondToKey(int direction) {
 		//first, protect against null pointer exception
 		//(user cannot go through non-existent door)
 		if(direction < 4) {
@@ -152,12 +153,49 @@ public class CaveRoom {
 				CaveExplorer.currentRoom = borderingRooms[direction];
 				CaveExplorer.currentRoom.enter();
 				CaveExplorer.inventory.updateMap();
-			}	
-		}else {
+			}
+		}
+		else if(direction == 5) {
+			if(CaveExplorer.josukeInParty) {
+				activateJotaro();
+				CaveExplorer.josukeInParty = false;
+				CaveExplorer.inventory.updateMap();
+			}
+			else {
+				System.out.println("Josuke isn't with you yet. You have to go find him.");
+			}
+		}
+		else {
 			performAction(direction);
 		}
 	}
 	
+	public void activateJotaro() {
+		String validKeys = "wdsa";
+		System.out.println("Pick a direction");
+		while(directionNotChosen) {
+			String input = CaveExplorer.in.nextLine();
+			if(isValid(input)) {
+				respondToInput(validKeys.indexOf(input));
+			}
+		}
+		System.out.println("Alright. I've made a path.");
+	}
+
+
+	public void respondToInput(int direction) {
+		if(direction < 4) {
+			if(borderingRooms[direction] != null && doors[direction] == null) {
+				CaveExplorer.currentRoom.setConnection(direction, borderingRooms[direction], new Door());
+				directionNotChosen = false;
+			}
+		}
+		else {
+			performAction(direction);
+		}
+	}
+
+
 	/**
 	 * Override to give response to keys other than wasd
 	 * @param direction
@@ -189,7 +227,7 @@ public class CaveRoom {
 		CaveExplorer.caves[0][2] = customFahad;
 		CaveRoom customDavid = new DavidRoom("Maths Room");
 		CaveExplorer.caves[1][2] = customDavid;
-		CaveRoom customLightsOut = new LightsOut("Jotaro's Room");
+		CaveRoom customLightsOut = new LightsOut("Lights Out");
 		CaveExplorer.caves[2][2] = customLightsOut;
 		//--- WE WILL DO LATER
 		

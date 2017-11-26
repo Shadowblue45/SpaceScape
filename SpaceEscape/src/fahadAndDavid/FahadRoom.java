@@ -43,6 +43,7 @@ public class FahadRoom extends CaveRoom {
 			s = CaveExplorer.in.nextLine();
 		}
 		CaveExplorer.print("Don't you dare comeback.");
+		CaveExplorer.josukeInParty = true;
 		this.active = false;
 	}
 	

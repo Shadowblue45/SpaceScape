@@ -39,7 +39,7 @@ public class NPCRoom extends CaveRoom {
 	//the methods below REPLACE CaveRoom methods(override)
 	
 	public String validKeys() {
-		return "wdsae";
+		return "wdsaer";
 	}
 	
 	public void printAllowedEntry() {

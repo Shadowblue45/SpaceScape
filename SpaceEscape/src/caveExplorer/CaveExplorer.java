@@ -10,12 +10,14 @@ public class CaveExplorer {
 	public static Inventory inventory;//where all objects found in cave are kept
 	public static boolean playing = true;
 	public static NPC[] npcs;
+	public static boolean josukeInParty;
 
 	public static void main(String[] args) {
 		in = new Scanner(System.in);
 		CaveRoom.setUpCaves();
 		
 		inventory = new Inventory();
+		CaveExplorer.josukeInParty = false;
 		startExploring();
 	} 
 	
