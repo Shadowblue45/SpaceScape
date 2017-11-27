@@ -53,7 +53,6 @@ public class newYonathanFrontEnd implements TylerSupport {
 		
 		 toggleListX = new int[incompleteLine][90];
 		 toggleListY = new int[incompleteLine][90];
-
 		
 		while(incompleteLine>0) {
 			System.out.println(incompleteLine);
@@ -102,6 +101,9 @@ public class newYonathanFrontEnd implements TylerSupport {
 
 	private static void toggle(boolean b) {
 		if(b) {
+			if(identifier+1>startIntX.length()-1) {
+				if(board[toggleListX[0][0]][toggleListY[0][0]].equals(filler)!=true&&!board[toggleListX[0][0]][toggleListY[0][0]].equals("e"+incompleteLine+" ")) {incompleteLine++;}else {}
+			}else if(board[toggleListX[identifier+1][0]][toggleListY[identifier+1][0]].equals(filler)!=true&&!board[toggleListX[identifier+1][0]][toggleListY[identifier+1][0]].equals("e"+incompleteLine+" ")) {incompleteLine++;}else {}
 		for(int y =toggleListX[identifier].length-1; y>-1;y--) {
 			if(toggleListX[identifier][y]!=Integer.parseInt(endIntX.substring(identifier,identifier+1)) || toggleListY[identifier][y]!=Integer.parseInt(endIntY.substring(identifier,identifier+1))) {
 			board[toggleListX[identifier][y]][toggleListY[identifier][y]]= filler;
@@ -109,6 +111,13 @@ public class newYonathanFrontEnd implements TylerSupport {
 		}
 		}
 		identifier();
+		
+		for(int y =toggleListX[identifier].length-1; y>-1;y--) {
+			if(toggleListX[identifier][y]!=Integer.parseInt(endIntX.substring(identifier,identifier+1)) || toggleListY[identifier][y]!=Integer.parseInt(endIntY.substring(identifier,identifier+1))) {
+			board[toggleListX[identifier][y]][toggleListY[identifier][y]]= filler;
+			}
+		}
+		
 		xTracker=0;
 		yTracker=0;
 		for(int i=0;i<3;i++) {
