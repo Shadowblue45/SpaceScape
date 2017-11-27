@@ -31,6 +31,10 @@ public class DavidRoom extends CaveRoom {
 			CaveExplorer.print("You must press the button to escape!");
 		}
 	}
+	
+	public String getContents() {
+		return "F";
+	}
 
 	public void interact() {
 			CaveExplorer.print("Congratulations! You have escaped the ship!");
