@@ -1,14 +1,10 @@
-
-
 package caveExplorer;
-
-
-
 
 import fahadAndDavid.DavidRoom;
 import fahadAndDavid.FahadRoom;
 import fahadAndDavid.LightsOut;
 import rickyAndGarrett.GarrettRoom;
+import rickyAndGarrett.Minesweeper;
 import rickyAndGarrett.RickyRoom;
 import yonathaWins.GameStarter;
 import yonathaWins.TylerCave;
@@ -247,8 +243,8 @@ public class CaveRoom {
 		
 
 		CaveRoom customGar = new GarrettRoom("Trivia Room");
-		CaveExplorer.caves[0][3] = customGar;
-		CaveRoom customRoomRicky = new RickyRoom("Minesweeper Room");
+		CaveExplorer.caves[1][3] = customGar;
+		CaveRoom customRoomRicky = new RickyRoom("Ricky Room");
 		CaveExplorer.caves[0][2] = customRoomRicky;
 
 		
@@ -265,6 +261,8 @@ public class CaveRoom {
 		CaveExplorer.caves[3][4] = customYonathan;
 		CaveRoom flowRoom = new YonathanWinsAgain("Yonathan Room");
 		CaveExplorer.caves[2][4] = flowRoom;
+		CaveRoom minesweeperRoom = new Minesweeper("Minesweeper Room");
+		CaveExplorer.caves[1][2] = minesweeperRoom;
 		
 		//4. Set your starting room:
 		CaveExplorer.currentRoom = CaveExplorer.caves[1][1];
@@ -288,6 +286,9 @@ public class CaveRoom {
 		c[0][1].setConnection(EAST, c[0][2], new Door());
 		c[0][2].setConnection(EAST, c[0][3], new Door());
 		c[0][3].setConnection(EAST, c[0][4], new Door());
+		c[0][2].setConnection(SOUTH, c[1][2], new Door());
+		c[1][2].setConnection(EAST, c[1][3], new Door());
+		c[1][3].setConnection(EAST, c[1][4], new Door());
 	}
 
  
