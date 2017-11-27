@@ -182,12 +182,15 @@ public class CaveRoom {
 	}
 	
 	public void activateJotaro() {
-		String validKeys = "wdsa";
+		String validKeys = "8624";
 		System.out.println("Pick a direction");
 		while(directionNotChosen) {
 			String input = CaveExplorer.in.nextLine();
-			if(isValid(input)) {
+			if(validKeys.indexOf(input) > -1 && input.length() == 1) {
 				respondToInput(validKeys.indexOf(input));
+			}
+			else {
+				System.out.println("You can only enter '8', '6', '2', or '4'.");
 			}
 		}
 		System.out.println("Alright. I've made a path.");
