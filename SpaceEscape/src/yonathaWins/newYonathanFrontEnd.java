@@ -15,25 +15,32 @@ public class newYonathanFrontEnd implements TylerSupport {
 	public static String startIntX="";
 	public static String startIntY="";
 	public static int incompleteLine =0;
-	static int identifier=0;
-	
-	public static String orientation[]= {	"___\n|"+identifier+" \n|  " ,
-			"___\n "+identifier+"|\n ___",
-			"___\n "+identifier+" \n___" ,
-			"| |\n|"+identifier+"|\n| |",
-			"|  \n|"+identifier+" \n___",
-			"  |\n "+identifier+"|\n___"
+	static int identifier;
+	static int[][] toggleListX;
+	static int[][] toggleListY;
+	static int xTracker =0;
+	static int yTracker =0;
+	static String orientation[]= {	"-"+identifier+"-" ,
+			"-"+identifier+"|",
+			"-"+identifier+"|",
+			"|"+identifier+"-",
+			"|"+identifier+"-",
+			"|"+identifier+"|"
 	};
 
-	public static String filler=" .";
+	public static String filler=" . ";
 	static boolean checkWin = false;
-	public static String[][] board = new String[3][3];
+	
+	public static String[][] board = new String[6][6];
+		
+	
 	public static void main(String[] args) {
 		for(int x = 0; x<board.length; x++) {
 			for(int y =0; y<board[x].length;y++) {
 				board[x][y]= filler;
 			}
 		}
+		identifier=0;
 		for(int i=0;i<3;i++) {
 			NewTylerBackEnd.segX[i]=-1;
 			NewTylerBackEnd.segY[i]=-1;
@@ -41,12 +48,18 @@ public class newYonathanFrontEnd implements TylerSupport {
 		makeGoal((int)(Math.random()*2+1));
 		NewTylerBackEnd.currentX=Integer.parseInt(startIntX.substring(identifier,identifier+1));
 		NewTylerBackEnd.currentY=Integer.parseInt(startIntY.substring(identifier,identifier+1));
+		NewTylerBackEnd.segX[2]=Integer.parseInt(startIntX.substring(identifier,identifier+1));
+		NewTylerBackEnd.segY[2]=Integer.parseInt(startIntY.substring(identifier,identifier+1));
 		
-		while(incompleteLine<10) {
-			
+		 toggleListX = new int[incompleteLine][90];
+		 toggleListY = new int[incompleteLine][90];
+
+		
+		while(incompleteLine>0) {
+			System.out.println(incompleteLine);
 		print(board);
 		System.out.println(startIntX+" "+startIntY+" "+endIntY+" "+endIntY);
-		
+		System.out.println(NewTylerBackEnd.currentX+" "+NewTylerBackEnd.currentY);
 		
 		String input = NewTylerBackEnd.in.nextLine();
 		if(input.equals("jeff")) {
@@ -58,9 +71,11 @@ public class newYonathanFrontEnd implements TylerSupport {
 		//identifier();
 		//System.out.println(identifier);
 		
-		incompleteLine++;
+		
 		}
-		System.out.println("a");
+		
+		
+		System.out.println("you win");
 	}
 	
 	private static void makeChange(String input) {
@@ -69,18 +84,72 @@ public class newYonathanFrontEnd implements TylerSupport {
 			NewTylerBackEnd.move(input);
 			if(NewTylerBackEnd.currentX!=Integer.parseInt(endIntX.substring(identifier,identifier+1)) || NewTylerBackEnd.currentY!=Integer.parseInt(endIntY.substring(identifier,identifier+1))) {
 				setUpOrientation();
+				board[NewTylerBackEnd.currentX][NewTylerBackEnd.currentY] = " "+identifier+" ";
+			
 			}else {
+				setUpOrientation();
+				incompleteLine--;
+				toggle(false);
+				System.out.println("line done");
 				
 			}
 		}else {
-			
+			System.out.println("working");
+			toggle(true);
 		}
 		
+	}
+
+	private static void toggle(boolean b) {
+		if(b) {
+		for(int y =toggleListX[identifier].length-1; y>-1;y--) {
+			if(toggleListX[identifier][y]!=Integer.parseInt(endIntX.substring(identifier,identifier+1)) || toggleListY[identifier][y]!=Integer.parseInt(endIntY.substring(identifier,identifier+1))) {
+			board[toggleListX[identifier][y]][toggleListY[identifier][y]]= filler;
+			}
+		}
+		}
+		identifier();
+		xTracker=0;
+		yTracker=0;
+		for(int i=0;i<3;i++) {
+			NewTylerBackEnd.segX[i]=-1;
+			NewTylerBackEnd.segY[i]=-1;
+		}
+		NewTylerBackEnd.currentX=Integer.parseInt(startIntX.substring(identifier,identifier+1));
+		NewTylerBackEnd.currentY=Integer.parseInt(startIntY.substring(identifier,identifier+1));
+		NewTylerBackEnd.segX[2]=Integer.parseInt(startIntX.substring(identifier,identifier+1));
+		NewTylerBackEnd.segY[2]=Integer.parseInt(startIntY.substring(identifier,identifier+1));
+		resetOrientation();
+		
+	}
+
+	private static void resetOrientation() {
+		orientation[0]="-"+identifier+"-" ;
+		orientation[1]="-"+identifier+"|";
+		orientation[2]="-"+identifier+"|";
+		orientation[3]="|"+identifier+"-";
+		orientation[4]="|"+identifier+"-";
+		orientation[5]="|"+identifier+"|";
 	}
 
 	private static void setUpOrientation() {
 		//checks if segx[] and y are  set up and if you can use set orientation then uses it
 		
+		NewTylerBackEnd.segX[0]=NewTylerBackEnd.segX[1];
+		NewTylerBackEnd.segX[1]=NewTylerBackEnd.segX[2];
+		NewTylerBackEnd.segX[2]=NewTylerBackEnd.currentX;
+		toggleListX[identifier][xTracker]=NewTylerBackEnd.currentX;
+		xTracker++;
+		NewTylerBackEnd.segY[0]=NewTylerBackEnd.segY[1];
+		NewTylerBackEnd.segY[1]=NewTylerBackEnd.segY[2];
+		NewTylerBackEnd.segY[2]=NewTylerBackEnd.currentY;
+		toggleListY[identifier][yTracker]=NewTylerBackEnd.currentY;
+		yTracker++;
+		if(NewTylerBackEnd.segX[0]==-1||NewTylerBackEnd.segY[0]==-1) {
+			
+		}else {
+			board[NewTylerBackEnd.segX[1]][NewTylerBackEnd.segY[1]] = orientation[NewTylerBackEnd.setOrientation()];
+		}
 	}
 
 	private static int identifier() {
