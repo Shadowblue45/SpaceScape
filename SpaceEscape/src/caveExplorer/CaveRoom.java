@@ -262,9 +262,9 @@ public class CaveRoom {
 
 		CaveRoom customTyler = new TylerCave("Room");
 		CaveExplorer.caves[1][0] = customTyler;
-		CaveRoom customYonathan = new GameStarter("Room");
-		CaveExplorer.caves[0][0] = customYonathan;
-		CaveRoom flowRoom = new YonathanWinsAgain("Flow Room");
+		CaveRoom customYonathan = new GameStarter("Flow Room");
+		CaveExplorer.caves[2][0] = customYonathan;
+		CaveRoom flowRoom = new YonathanWinsAgain("Yonathan Room");
 		CaveExplorer.caves[0][0] = flowRoom;
 
 		
@@ -289,6 +289,7 @@ public class CaveRoom {
 		c[0][2].setConnection(EAST, c[0][3], new Door());
 		c[0][3].setConnection(EAST, c[0][4], new Door());
 		c[0][0].setConnection(SOUTH, c[1][0], new Door());
+		c[1][0].setConnection(SOUTH, c[2][0], new Door());
 		c[0][1].setConnection(WEST, c[0][0], new Door());
 		c[0][2].setConnection(SOUTH, c[1][2], new Door());
 		c[1][2].setConnection(SOUTH, c[2][2], new Door());
