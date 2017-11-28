@@ -6,6 +6,7 @@ import caveExplorer.CaveRoom;
 public class GarrettRoom extends CaveRoom {
 	
 	private String[] trivia = {"The cruise ship can accelerate up to 2 kilometers per second.",
+			"The most popular anime currently is Neon Genesis Evangelion.",	   
 			"If you give Josuke a new pair of shoes, for one time only, Josuke will help you break down a wall. Don't ask why.",
 			"This ship is the first escape room themed ship and can hold up to 400 people.",
 			"A few of the bartenders that died, watered down beer. The aliens did not approve.",

@@ -36,10 +36,10 @@ public class FahadRoom extends CaveRoom {
 	}
 
 	public void interact() {
-		CaveExplorer.print("Yo! Nice to meet you. I'm Josuke Higashikata");
+		CaveExplorer.print("Yo! Nice to meet you. I'm Josuke Higashikata. You need help?");
 		String s = CaveExplorer.in.nextLine();
-		while(!s.equalsIgnoreCase("bye")) {
-			CaveExplorer.print("Why are you still here");
+		while(!s.equalsIgnoreCase("yes")) {
+			CaveExplorer.print("I only accept yes for an answer.");
 			s = CaveExplorer.in.nextLine();
 		}
 		CaveExplorer.print("Don't you dare comeback.");

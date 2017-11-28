@@ -1,14 +1,10 @@
-
-
 package caveExplorer;
-
-
-
 
 import fahadAndDavid.DavidRoom;
 import fahadAndDavid.FahadRoom;
 import fahadAndDavid.LightsOut;
 import rickyAndGarrett.GarrettRoom;
+import rickyAndGarrett.Minesweeper;
 import rickyAndGarrett.RickyRoom;
 import yonathaWins.GameStarter;
 import yonathaWins.TylerCave;
@@ -237,7 +233,7 @@ public class CaveRoom {
 		}
 		//3. Replace default rooms with custom rooms
 		CaveRoom customFahad = new FahadRoom("Josuke's Room");
-		CaveExplorer.caves[0][0] = customFahad;
+		CaveExplorer.caves[1][4] = customFahad;
 		CaveRoom customDavid = new DavidRoom("Maths Room");
 		CaveExplorer.caves[4][4] = customDavid;
 		CaveRoom customLightsOut = new LightsOut("Lights Out");
@@ -250,29 +246,32 @@ public class CaveRoom {
 		CaveExplorer.caves[0][3] = customGar;
 		CaveRoom customRoomRicky = new RickyRoom("Minesweeper Room");
 		CaveExplorer.caves[0][2] = customRoomRicky;
-
 		
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = new NPC();
-		CaveExplorer.npcs[0].setPosition(1, 0);
+		CaveExplorer.npcs[0].setPosition(1,1);
 
 
 		//ad each person room like this
 
 		CaveRoom customTyler = new TylerCave("Room");
-		CaveExplorer.caves[1][4] = customTyler;
+		CaveExplorer.caves[0][0] = customTyler;
 		CaveRoom customYonathan = new GameStarter("Flow Room");
 		CaveExplorer.caves[3][4] = customYonathan;
 		CaveRoom flowRoom = new YonathanWinsAgain("Yonathan Room");
 		CaveExplorer.caves[2][4] = flowRoom;
+		CaveRoom minesweeperRoom = new Minesweeper("Minesweeper Room");
+		CaveExplorer.caves[0][4] = minesweeperRoom;
 
 		
+		
 		//4. Set your starting room:
-		CaveExplorer.currentRoom = CaveExplorer.caves[1][0];
+		CaveExplorer.currentRoom = CaveExplorer.caves[1][1];
 		CaveExplorer.currentRoom.enter();
 		//5. Set up doors
-
 		CaveRoom[][] c = CaveExplorer.caves;
+
+		c[1][1].setConnection(WEST, c[1][0], new Door());
 		
 		Door locked = new Door();
 		locked.setOpen(false);
