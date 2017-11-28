@@ -178,31 +178,9 @@ public class CaveRoom {
 	}
 	
 	public void activateJotaro() {
-		String validKeys = "8624";
-		System.out.println("Pick a direction");
-		while(directionNotChosen) {
-			String input = CaveExplorer.in.nextLine();
-			if(validKeys.indexOf(input) > -1 && input.length() == 1) {
-				respondToInput(validKeys.indexOf(input));
-			}
-			else {
-				System.out.println("You can only enter '8', '6', '2', or '4'.");
-			}
-		}
+		System.out.println("DORA!DORA!DORA!DORA!");
+		CaveExplorer.caves[3][4].setConnection(SOUTH, CaveExplorer.caves[4][4], new Door());
 		System.out.println("Alright. I've made a path.");
-	}
-
-
-	public void respondToInput(int direction) {
-		if(direction < 4) {
-			if(borderingRooms[direction] != null && doors[direction] == null) {
-				CaveExplorer.currentRoom.setConnection(direction, borderingRooms[direction], new Door());
-				directionNotChosen = false;
-			}
-		}
-		else {
-			performAction(direction);
-		}
 	}
 
 
@@ -234,7 +212,7 @@ public class CaveRoom {
 		//3. Replace default rooms with custom rooms
 		CaveRoom customFahad = new FahadRoom("Josuke's Room");
 		CaveExplorer.caves[1][4] = customFahad;
-		CaveRoom customDavid = new DavidRoom("Maths Room");
+		CaveRoom customDavid = new DavidRoom("Final Room");
 		CaveExplorer.caves[4][4] = customDavid;
 		CaveRoom customLightsOut = new LightsOut("Lights Out");
 		CaveExplorer.caves[0][1] = customLightsOut;
@@ -278,11 +256,13 @@ public class CaveRoom {
 		locked.setLocked(true);
 
 		c[0][0].setConnection(SOUTH, c[1][0], new Door());
+		c[0][4].setConnection(SOUTH, c[1][4], new Door());
 		c[1][4].setConnection(SOUTH, c[2][4], new Door());
 		c[2][4].setConnection(SOUTH, c[3][4], new Door());
-		c[3][4].setConnection(SOUTH, c[4][4], new Door());
 		c[0][0].setConnection(EAST, c[0][1], new Door());
 		c[0][1].setConnection(EAST, c[0][2], new Door());
+		c[0][2].setConnection(EAST, c[0][3], new Door());
+		c[0][3].setConnection(EAST, c[0][4], new Door());
 		c[0][2].setConnection(SOUTH, c[1][2], new Door());
 		c[1][2].setConnection(EAST, c[1][3], new Door());
 		c[1][3].setConnection(EAST, c[1][4], new Door());
