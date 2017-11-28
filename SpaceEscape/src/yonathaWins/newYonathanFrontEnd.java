@@ -66,7 +66,9 @@ public class newYonathanFrontEnd implements TylerSupport {
 		}
 		String userInput = NewTylerBackEnd.validMove(input);
 		makeChange(userInput);
-		
+		if(userInput.equals("jeff")) {
+			break;
+		}
 		//identifier();
 		//System.out.println(identifier);
 		
