@@ -233,7 +233,7 @@ public class CaveRoom {
 
 		//ad each person room like this
 
-		CaveRoom customTyler = new TylerCave("Room");
+		CaveRoom customTyler = new TylerCave("Helper Room");
 		CaveExplorer.caves[0][0] = customTyler;
 		CaveRoom customYonathan = new GameStarter("Flow Room");
 		CaveExplorer.caves[3][4] = customYonathan;
