@@ -61,7 +61,7 @@ public class NPCRoom extends CaveRoom {
 	
 	public String getContents() {
 		if(containsNPC() && presentNPC.isActive()) {
-			return "M";
+			return " ";
 		}else {
 			//return what would be returned otherwise
 			return super.getContents();
