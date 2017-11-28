@@ -243,9 +243,10 @@ public class CaveRoom {
 		
 
 		CaveRoom customGar = new GarrettRoom("Trivia Room");
-		CaveExplorer.caves[0][3] = customGar;
-		CaveRoom customRoomRicky = new RickyRoom("Minesweeper Room");
+		CaveExplorer.caves[1][3] = customGar;
+		CaveRoom customRoomRicky = new RickyRoom("Ricky Room");
 		CaveExplorer.caves[0][2] = customRoomRicky;
+
 		
 		CaveExplorer.npcs = new NPC[1];
 		CaveExplorer.npcs[0] = new NPC();
@@ -261,14 +262,13 @@ public class CaveRoom {
 		CaveRoom flowRoom = new YonathanWinsAgain("Yonathan Room");
 		CaveExplorer.caves[2][4] = flowRoom;
 		CaveRoom minesweeperRoom = new Minesweeper("Minesweeper Room");
-		CaveExplorer.caves[0][4] = minesweeperRoom;
-
-		
+		CaveExplorer.caves[1][2] = minesweeperRoom;
 		
 		//4. Set your starting room:
 		CaveExplorer.currentRoom = CaveExplorer.caves[1][1];
 		CaveExplorer.currentRoom.enter();
 		//5. Set up doors
+
 		CaveRoom[][] c = CaveExplorer.caves;
 
 		c[1][1].setConnection(WEST, c[1][0], new Door());
@@ -286,6 +286,9 @@ public class CaveRoom {
 		c[0][1].setConnection(EAST, c[0][2], new Door());
 		c[0][2].setConnection(EAST, c[0][3], new Door());
 		c[0][3].setConnection(EAST, c[0][4], new Door());
+		c[0][2].setConnection(SOUTH, c[1][2], new Door());
+		c[1][2].setConnection(EAST, c[1][3], new Door());
+		c[1][3].setConnection(EAST, c[1][4], new Door());
 	}
 
  
