@@ -22,10 +22,10 @@ public class FahadFrontend implements DavidSupport{
 		while(!backend.isVictorious()){
 			displayBoard(visuals);
 			String input = DavidBackend.in.nextLine();
-			String userInput = backend.getValidUserInput(input);
 			if(input.equals(cheat.toLowerCase())) {
 				break;
 			}
+			String userInput = backend.getValidUserInput(input);
 			respondToInput(userInput);
 		}
 		updateWinBoard();
