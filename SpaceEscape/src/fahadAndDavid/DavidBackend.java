@@ -61,9 +61,6 @@ public class DavidBackend implements FahadSupport{
 	}
 
 	public boolean validInput(String input) {
-		if(input.equals("Clap on".toLowerCase())) {
-			return true;
-		}
 		if(input.length() == 3 && input.substring(1,2).equals(",")) {
 			if((input.substring(0,1).compareTo("4") <= 0 && input.substring(0,1).compareTo("0") >= 0) &&
 					(input.substring(2,3).compareTo("4") <= 0 && input.substring(2,3).compareTo("0") >= 0)) {
