@@ -31,7 +31,7 @@ public class RickyFrontEnd implements GarrettSupport{
 
 	private void printGameOverMessage(boolean victorious) {
 		if(victorious) {
-			System.out.println("You is win!");
+			System.out.println("You've won! Here's your key, you're one step closer to getting off this ship!");
 		}else {
 			System.out.println("You is lose!");
 		}
