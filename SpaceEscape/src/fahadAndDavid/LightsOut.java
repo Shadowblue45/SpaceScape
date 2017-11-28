@@ -11,5 +11,9 @@ public class LightsOut extends CaveRoom {
 		super.enter();
 		FahadFrontend.main(null);
 	}
+	
+	public String getContents() {
+		return "L";
+	}
 
 }
