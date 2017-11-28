@@ -66,7 +66,7 @@ public class FahadFrontend implements DavidSupport{
 	}
 
 	public void printGameOverMessage() {
-		System.out.println("GG. You've done well");
+		System.out.println("You've won, now you may get the first key");
 	}
 
 	public void setBoard() {

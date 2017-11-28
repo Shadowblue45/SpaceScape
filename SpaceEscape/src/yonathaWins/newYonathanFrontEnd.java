@@ -74,7 +74,7 @@ public class newYonathanFrontEnd implements TylerSupport {
 		}
 		
 		
-		System.out.println("you win");
+		System.out.println("you've won the final key, you can now leave the ship earthling!");
 	}
 	
 	private static void makeChange(String input) {
