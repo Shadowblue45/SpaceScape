@@ -8,9 +8,9 @@ public class TylerCave extends CaveRoom {
  
 	public boolean isChatting = true;
 	String backstory = "You were on a space cruise when aliens came and abducted you. \n You're stuck on this spaceship now, with little chance of freedom.";
-	String toEscape = "\n The aliens have killed all the human that were on the ship, except for you of course. \n Is escape possible, of course it is but it sure is difficult "
+	String toEscape = "\n The aliens have killed everyone that was on the ship, except for you of course. \n Is escape possible, of course it is but it sure is difficult "
 			+ "\n  ";
-	String minigames = "\n There's minigames you have to complete in order to escape, play at your own risk";
+	String minigames = "There's minigames you have to complete in order to escape, play at your own risk";
 	String goodbye = "\n That's all I'm going to tell you, good luck and don't die!";
 	
 	String escapePods = "The escape pods are missing, search around to find them if you want to get out alive";
